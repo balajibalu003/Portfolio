@@ -16,6 +16,7 @@
             scroll-behavior: smooth;
         }
 
+        /* Root Variables for consistent styling */
         :root {
             --primary-color: #00bfff; /* Deep Sky Blue */
             --secondary-color: #00ffff; /* Aqua */
@@ -479,16 +480,25 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
             cursor: pointer;
             font-size: 0.95em;
-            animation: popIn 0.6s ease-out forwards;
+            animation: popIn 0.6s ease-out forwards; /* Added animation for skills */
         }
 
+        /* Delay animation for each skill item */
         #skills ul li:nth-child(2) { animation-delay: 0.1s; }
         #skills ul li:nth-child(3) { animation-delay: 0.2s; }
+        #skills ul li:nth-child(4) { animation-delay: 0.3s; }
+        #skills ul li:nth-child(5) { animation-delay: 0.4s; }
+        #skills ul li:nth-child(6) { animation-delay: 0.5s; }
+        #skills ul li:nth-child(7) { animation-delay: 0.6s; }
+        #skills ul li:nth-child(8) { animation-delay: 0.7s; }
+        #skills ul li:nth-child(9) { animation-delay: 0.8s; }
+        /* Add more as needed for your number of skills */
 
         @keyframes popIn {
             from { opacity: 0; transform: scale(0.8); }
             to { opacity: 1; transform: scale(1); }
         }
+
 
         #skills ul li:hover {
             transform: translateY(-5px) scale(1.02);
@@ -519,15 +529,15 @@
             margin-top: 30px;
             font-size: 1em;
             color: #ddd;
-            display: none;
+            display: none; /* Hidden by default */
             opacity: 0;
             transform: translateY(10px);
-            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out; /* Smooth transition for show/hide */
             box-shadow: 0 4px 15px var(--shadow-light);
         }
         
         #skill-description.show {
-            display: block;
+            display: block; /* Show when class is added */
             opacity: 1;
             transform: translateY(0);
         }
@@ -577,13 +587,89 @@
             height: 32px;
             vertical-align: middle;
             margin-bottom: 8px;
-            filter: grayscale(10%);
-            transition: filter 0.3s ease;
+            filter: grayscale(10%); /* Subtle grayscale */
+            transition: filter 0.3s ease, transform 0.3s ease;
         }
         
         .social-icons-contact a:hover img {
-            filter: grayscale(0%);
+            filter: grayscale(0%); /* Full color on hover */
+            transform: scale(1.1); /* Slight zoom on image */
         }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px var(--shadow-light);
+            margin-top: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .contact-form h3 {
+            font-size: 2em;
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--light-text);
+            font-weight: 500;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: var(--text-color);
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 1em;
+            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .contact-form input[type="text"]:focus,
+        .contact-form input[type="email"]:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.3);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 14px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            width: 100%;
+            display: block;
+        }
+
+        .contact-form button:hover {
+            background-color: #0080ff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
+        }
+
 
         /* Footer (Removed redundant social-icons from here) */
         footer {
@@ -621,7 +707,7 @@
             padding: 12px 18px;
             border-radius: 50%;
             cursor: pointer;
-            display: none;
+            display: none; /* Hidden by default */
             z-index: 100;
             box-shadow: 0 5px 12px rgba(0,0,0,0.4);
             transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
@@ -651,7 +737,7 @@
                 flex-direction: column;
                 width: 100%;
                 margin-left: 0;
-                display: none;
+                display: none; /* Hidden by default, toggled by JS */
             }
 
             nav ul.show {
@@ -707,9 +793,12 @@
             }
 
             /* Adjust project layout for smaller screens if needed, though auto-fit minmax is usually good */
+            /* This media query block for .project is no longer needed due to auto-fit in #projects-container */
+            /*
             .project {
-                grid-template-columns: 1fr; /* Ensures single column on small screens */
+                grid-template-columns: 1fr;
             }
+            */
 
             #skills ul {
                 grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -720,6 +809,47 @@
                 gap: 20px;
             }
         }
+        /* ===== Interests Section ===== */
+#interests {
+    background: rgba(30, 30, 30, 0.9);
+    padding: 50px 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px var(--shadow-light);
+    margin-bottom: 80px;
+}
+
+#interests h2 {
+    font-size: 36px;
+    margin-bottom: 25px;
+    color: var(--secondary-color);
+    position: relative;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+#interests h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60%;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
+    transition: width 0.3s ease-out;
+}
+
+#interests:hover h2::after {
+    width: 100%;
+}
+
+.interest-content p {
+    font-size: 1em;
+    color: var(--light-text);
+    margin-bottom: 18px;
+    line-height: 1.7;
+}
+
     </style>
 </head>
 
@@ -735,7 +865,9 @@
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li> </ul>
+                <li><a href="#interests">Interests</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -743,13 +875,16 @@
         <section class="hero">
             <div id="particles-js"></div>
             <h1>Hey, I'm <span>Balaji Yalburgi</span></h1>
-            <p>Engineering Innovation, One Line of Code at a Time.</p>
-            <a href="Balaji_Yalburgi_Resume.pdf" class="resume-btn" target="_blank" download="Balaji_Yalburgi_Resume.pdf">Download Resume</a>
+            <p>Engineering Innovation, One Line of Code at a Time.<br> <small></small>📱 Interests & Tech Obsessions</small></h2>
+            </p>
+            
+            <a href="https://drive.google.com/file/d/18DfMuBQAr0LtaSvcAvl5WJu7ZE7O7fWh/view?usp=sharing" class="resume-btn" target="_blank" download="Balaji_Yalburgi_Resume.pdf">Download Resume</a>
         </section>
         
         <section id="about">
             <h2>About Me</h2>
             <p>Driven by a passion for crafting intelligent solutions through the synergy of Artificial Intelligence (leveraging frameworks like TensorFlow and PyTorch), scalable Cloud Computing (with expertise in AWS and Azure), efficient Automation practices, and robust Cybersecurity strategies. Currently immersed in exploring the potential of Decentralized Technologies and Serverless Architectures. My coding philosophy centers around creating elegant, maintainable solutions that not only address present challenges but are also adaptable to future technological landscapes.</p>
+            <p>Beyond coding, I'm an enthusiastic tech explorer, constantly diving into the latest gadgets, experiencing cutting-edge technologies, and staying on top of new mobile innovations and emerging tech trends. I love to understand how things work and how they can shape our future.</p>
             <img src="https://via.placeholder.com/800x400?text=Your+Professional+Image" alt="About Me" style="width: 100%; border-radius: 10px; margin-top: 30px; opacity: 0.9; transition: opacity 0.3s ease;" onerror="this.style.display='none'">
         </section>
 
@@ -825,6 +960,7 @@
                 </div>
             </div>
         </section>
+        
         <section id="skills">
             <h2>Skills & Technologies</h2>
             <ul id="skills-list">
@@ -886,6 +1022,14 @@
             <div id="skill-description" class=""></div>
         </section>
 
+<section id="interests">
+    <h2>Interests</h2>
+    <div class="interest-content">
+        <p>I'm a tech enthusiast who thrives on exploring the latest gadgets, smart devices, and next-gen innovations. Whether it's testing out the newest smartphones, diving into futuristic AR/VR gear, or following the latest trends in AI and automation—I'm always curious and hands-on.</p>
+        <p>I love experimenting with beta features, customizing UIs, and experiencing technology before it hits the mainstream. If it's new, smart, or disruptive—I'm in.</p>
+    </div>
+</section>
+
         <section id="contact">
             <h2>Contact Me 💻</h2>
             <div class="contact-content">
@@ -921,8 +1065,6 @@
                         Email
                     </p>
                 </div>
-
-
             </div>
         </section>
     </main>
@@ -1087,7 +1229,7 @@
 
             item.addEventListener('mouseout', function() {
                 skillDescriptionBox.classList.remove('show');
-                setTimeout(() => {
+                setTimeout(() => { // Gives time for opacity transition before clearing text
                     skillDescriptionBox.textContent = '';
                 }, 300);
             });
