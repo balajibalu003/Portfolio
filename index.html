@@ -1,1240 +1,1004 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balaji Yalburgi | Portfolio</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        /* ======== Base CSS ======== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        /* Root Variables for consistent styling */
-        :root {
-            --primary-color: #00bfff; /* Deep Sky Blue */
-            --secondary-color: #00ffff; /* Aqua */
-            --text-color: #eee;
-            --dark-bg: #141e30; /* Darker Blue */
-            --card-bg: rgba(25, 25, 25, 0.8);
-            --header-bg: rgba(25, 25, 25, 0.95);
-            --light-text: #bbb;
-            --link-hover: #fff;
-            --shadow-light: rgba(0,0,0,0.2);
-            --shadow-medium: rgba(0,0,0,0.3);
-            --transition-speed: 0.3s;
-        }
-
-        body {
-            font-family: 'Noto Sans', sans-serif;
-            background: linear-gradient(45deg, var(--dark-bg), #243b55); /* Animated gradient */
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            color: var(--text-color);
-            line-height: 1.6;
-            transition: background var(--transition-speed) ease;
-        }
-
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        /* ======== Header & Navigation ======== */
-        header {
-            background: var(--header-bg);
-            padding: 15px 0;
-            box-shadow: 0 4px 15px var(--shadow-medium); /* Adjusted shadow */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-            transition: all var(--transition-speed) ease; /* Added all for smoother shrink */
-        }
-
-        header.scrolled {
-            padding: 10px 0; /* Shrink on scroll */
-            background: rgba(15, 15, 15, 0.98); /* Darker on scroll */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-
-        nav {
-            max-width: 1200px;
-            width: 90%;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav .logo {
-            font-size: 26px; /* Restored size */
-            font-weight: 700;
-            color: var(--primary-color);
-            transition: color var(--transition-speed) ease;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            margin-left: auto;
-        }
-
-        nav ul li {
-            margin-left: 25px; /* Restored margin */
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--light-text);
-            font-weight: 500;
-            padding: 8px 0; /* Padding for underline effect */
-            position: relative;
-            transition: color var(--transition-speed) ease;
-            font-size: 1em; /* Restored size */
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--secondary-color);
-            transition: width var(--transition-speed) ease-out;
-        }
-
-        nav ul li a:hover,
-        nav ul li a.active {
-            color: var(--link-hover);
-        }
-        
-        nav ul li a:hover::after,
-        nav ul li a.active::after {
-            width: 100%;
-        }
-
-        .resume-btn {
-            background: var(--primary-color);
-            color: var(--link-hover);
-            padding: 10px 22px; /* Restored padding */
-            border-radius: 7px; /* Restored border-radius */
-            text-decoration: none;
-            font-weight: 600;
-            transition: background var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-            font-size: 0.95em;
-            margin-left: 25px; /* Restored margin */
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .resume-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transition: width 0.4s ease-out, height 0.4s ease-out, top 0.4s ease-out, left 0.4s ease-out;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-        }
-
-        .resume-btn:hover {
-            background: #0080ff;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 191, 255, 0.4);
-        }
-
-        .resume-btn:hover::before {
-            width: 200%;
-            height: 200%;
-            top: 0;
-            left: 0;
-            border-radius: 0;
-        }
-
-        /* Mobile Menu Toggle (from previous redesign, for reference) */
-        .menu-toggle {
-            display: none; /* Hidden by default, shown in media query */
-            background: none;
-            border: none;
-            color: var(--primary-color);
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 101;
-        }
-
-        /* ======== Hero Section ======== */
-        .hero {
-            text-align: center;
-            padding: 180px 20px 120px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        .hero h1 {
-            font-size: 48px; /* Restored size */
-            margin-bottom: 15px;
-            font-weight: 700;
-            line-height: 1.2;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUpDown 1s ease-out forwards 0.5s;
-        }
-
-        .hero h1 span {
-            color: var(--secondary-color);
-        }
-
-        .hero p {
-            font-size: 20px; /* Restored size */
-            margin-bottom: 30px;
-            color: #ddd;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUpDown 1s ease-out forwards 0.8s;
-        }
-
-        @keyframes fadeInUpDown {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero .resume-btn {
-            animation: fadeInUpDown 1s ease-out forwards 1.1s;
-        }
-
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-
-        /* ======== Main Content & Sections ======== */
-        main {
-            max-width: 1200px;
-            width: 90%;
-            margin: auto;
-            padding-top: 50px;
-            padding-bottom: 80px;
-        }
-
-        section {
-            margin-bottom: 80px;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        section h2 {
-            font-size: 36px; /* Restored size */
-            margin-bottom: 30px;
-            color: var(--text-color);
-            position: relative;
-            padding-bottom: 10px;
-            display: inline-block;
-            animation: slideInLeft 0.8s ease-out forwards;
-        }
-
-        section h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 60%;
-            height: 4px;
-            background: var(--secondary-color);
-            border-radius: 2px;
-            transition: width 0.4s ease-out;
-        }
-
-        section.visible h2::after {
-            width: 100%;
-        }
-
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        /* ======== About Me Section (Minor Adjustment) ======== */
-        #about img {
-            max-width: 100%; /* Ensure image doesn't overflow */
-            height: auto; /* Maintain aspect ratio */
-        }
-
-        /* ======== Experience Section ======== */
-        #experience {
-            position: relative;
-            padding-left: 20px;
-        }
-
-        #experience::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: rgba(255, 255, 255, 0.1);
-            z-index: 0;
-        }
-
-        #experience .experience-item {
-            background: var(--card-bg);
-            padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px var(--shadow-light);
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        #experience .experience-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 25px var(--shadow-medium);
-            background: rgba(35, 35, 35, 0.9);
-        }
-
-        #experience .experience-item img {
-            width: 70px;
-            height: 70px;
-            min-width: 70px;
-            border-radius: 10px;
-            object-fit: cover;
-            opacity: 0.9;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        #experience .experience-item:hover img {
-            transform: scale(1.08);
-            opacity: 1;
-        }
-
-        #experience .experience-item div {
-            flex-grow: 1;
-        }
-
-        #experience .experience-item h3 {
-            font-size: 1.4em;
-            margin-bottom: 8px;
-            color: var(--secondary-color);
-        }
-
-        #experience .experience-item p {
-            font-size: 0.95em;
-            color: #ccc;
-        }
-
-        #experience .experience-item::after {
-            content: '';
-            position: absolute;
-            left: -15px;
-            top: 35px;
-            width: 15px;
-            height: 15px;
-            background: var(--secondary-color);
-            border: 3px solid var(--dark-bg);
-            border-radius: 50%;
-            z-index: 1;
-            transform: translateX(-50%);
-        }
-
-        /* ======== Projects Section - IMPROVED LAYOUT ======== */
-        #projects-container { /* Added a new container for the grid */
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-            gap: 30px; /* Space between projects */
-        }
-
-        .project {
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 6px 20px var(--shadow-light);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-            overflow: hidden;
-            display: flex; /* Use flex for vertical stacking of image and details */
-            flex-direction: column;
-            height: 100%; /* Ensure projects in grid have consistent height */
-        }
-
-        .project:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 25px var(--shadow-medium);
-            background: rgba(35, 35, 35, 0.9);
-        }
-
-        .project img {
-            width: 100%;
-            height: 200px; /* Fixed height for consistency in grid */
-            object-fit: cover;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-            opacity: 0.9;
-            transition: transform 0.4s ease, opacity 0.4s ease;
-        }
-
-        .project:hover img {
-            transform: scale(1.05);
-            opacity: 1;
-        }
-
-        .project .project-details {
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1; /* Allows content to push tech stack to bottom */
-        }
-
-        .project h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            color: var(--secondary-color);
-            display: flex;
-            align-items: center;
-        }
-
-        .project h3 a {
-            color: inherit;
-            text-decoration: none;
-            margin-left: 10px;
-            transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
-        }
-        
-        .project h3 a:hover {
-            color: var(--primary-color);
-            transform: scale(1.1);
-        }
-
-        .project p {
-            font-size: 0.95em;
-            color: #ccc;
-            margin-bottom: 15px;
-            flex-grow: 1; /* Allow description to take space */
-        }
-
-        .project .tech-stack {
-            font-size: 0.85em;
-            color: var(--light-text);
-            margin-top: auto; /* Push to the bottom */
-            font-weight: 600;
-        }
-        
-        /* ======== Skills Section ======== */
-        #skills ul {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 20px;
-        }
-
-        #skills ul li {
-            background: var(--card-bg);
-            color: var(--text-color);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px var(--shadow-light);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-            cursor: pointer;
-            font-size: 0.95em;
-            animation: popIn 0.6s ease-out forwards; /* Added animation for skills */
-        }
-
-        /* Delay animation for each skill item */
-        #skills ul li:nth-child(2) { animation-delay: 0.1s; }
-        #skills ul li:nth-child(3) { animation-delay: 0.2s; }
-        #skills ul li:nth-child(4) { animation-delay: 0.3s; }
-        #skills ul li:nth-child(5) { animation-delay: 0.4s; }
-        #skills ul li:nth-child(6) { animation-delay: 0.5s; }
-        #skills ul li:nth-child(7) { animation-delay: 0.6s; }
-        #skills ul li:nth-child(8) { animation-delay: 0.7s; }
-        #skills ul li:nth-child(9) { animation-delay: 0.8s; }
-        /* Add more as needed for your number of skills */
-
-        @keyframes popIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-
-        #skills ul li:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 6px 20px var(--shadow-medium);
-            background: rgba(35, 35, 35, 0.9);
-        }
-
-        #skills ul li i {
-            font-size: 32px;
-            color: var(--secondary-color);
-            transition: color var(--transition-speed) ease;
-        }
-
-        #skills ul li:hover i {
-            color: var(--primary-color);
-        }
-
-        #skills ul li span {
-            font-size: 0.9em;
-            text-align: center;
-            font-weight: 600;
-        }
-        
-        #skill-description {
-            background: rgba(30, 30, 30, 0.9);
-            padding: 18px;
-            border-radius: 10px;
-            margin-top: 30px;
-            font-size: 1em;
-            color: #ddd;
-            display: none; /* Hidden by default */
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease-out, transform 0.3s ease-out; /* Smooth transition for show/hide */
-            box-shadow: 0 4px 15px var(--shadow-light);
-        }
-        
-        #skill-description.show {
-            display: block; /* Show when class is added */
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ======== Contact Section ======== */
-        #contact {
-            text-align: center;
-        }
-
-        .social-icons-contact { /* New class name for social icons in contact */
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
-        }
-
-        .social-icons-contact p {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: var(--text-color);
-            font-size: 1.1em;
-            transition: transform 0.2s ease;
-        }
-
-        .social-icons-contact p:hover {
-            transform: translateY(-5px);
-        }
-
-        .social-icons-contact a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-size: 28px;
-            margin-bottom: 8px;
-            transition: color 0.3s ease, transform 0.3s ease;
-            display: inline-block;
-        }
-        
-        .social-icons-contact a:hover {
-            color: var(--primary-color);
-            transform: scale(1.15);
-        }
-
-        .social-icons-contact img {
-            width: 32px;
-            height: 32px;
-            vertical-align: middle;
-            margin-bottom: 8px;
-            filter: grayscale(10%); /* Subtle grayscale */
-            transition: filter 0.3s ease, transform 0.3s ease;
-        }
-        
-        .social-icons-contact a:hover img {
-            filter: grayscale(0%); /* Full color on hover */
-            transform: scale(1.1); /* Slight zoom on image */
-        }
-
-        .contact-form {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px var(--shadow-light);
-            margin-top: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: left;
-        }
-
-        .contact-form h3 {
-            font-size: 2em;
-            color: var(--secondary-color);
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        .contact-form label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--light-text);
-            font-weight: 500;
-        }
-
-        .contact-form input[type="text"],
-        .contact-form input[type="email"],
-        .contact-form textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            background-color: rgba(0, 0, 0, 0.3);
-            color: var(--text-color);
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 1em;
-            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-        }
-
-        .contact-form input[type="text"]:focus,
-        .contact-form input[type="email"]:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.3);
-        }
-
-        .contact-form textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .contact-form button {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 14px 25px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.1em;
-            font-weight: 600;
-            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-            width: 100%;
-            display: block;
-        }
-
-        .contact-form button:hover {
-            background-color: #0080ff;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
-        }
-
-
-        /* Footer (Removed redundant social-icons from here) */
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            background: #222;
-            font-size: 15px;
-            color: var(--light-text);
-            transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
-        }
-
-        footer p {
-            margin: 0;
-            margin-bottom: 10px;
-        }
-
-        footer a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            transition: color var(--transition-speed) ease;
-        }
-
-        footer a:hover {
-            color: var(--link-hover);
-        }
-
-        /* Scroll to top button */
-        #scrollToTopBtn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--primary-color);
-            color: #fff;
-            border: none;
-            padding: 12px 18px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: none; /* Hidden by default */
-            z-index: 100;
-            box-shadow: 0 5px 12px rgba(0,0,0,0.4);
-            transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
-            font-size: 1.1em;
-            border: 2px solid transparent;
-        }
-
-        #scrollToTopBtn:hover {
-            background-color: #0080ff;
-            color: #fff;
-            transform: translateY(-3px) scale(1.05);
-            border-color: var(--secondary-color);
-        }
-
-        /* ======== Mobile Responsiveness ======== */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav .logo {
-                margin-bottom: 15px;
-            }
-
-            nav ul {
-                flex-direction: column;
-                width: 100%;
-                margin-left: 0;
-                display: none; /* Hidden by default, toggled by JS */
-            }
-
-            nav ul.show {
-                display: flex;
-            }
-
-            nav ul li {
-                margin: 10px 0;
-                width: 100%;
-                text-align: center;
-            }
-
-            nav ul li a {
-                display: block;
-                padding: 10px 0;
-            }
-
-            .resume-btn {
-                margin: 15px auto 0;
-                width: 80%;
-                text-align: center;
-            }
-
-            .hero h1 {
-                font-size: 38px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            section h2 {
-                font-size: 30px;
-            }
-
-            #experience .experience-item {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            #experience .experience-item img {
-                margin-bottom: 15px;
-            }
-
-            #experience::before {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            #experience .experience-item::after {
-                left: 50%;
-                transform: translateX(-50%);
-                top: -8px;
-            }
-
-            /* Adjust project layout for smaller screens if needed, though auto-fit minmax is usually good */
-            /* This media query block for .project is no longer needed due to auto-fit in #projects-container */
-            /*
-            .project {
-                grid-template-columns: 1fr;
-            }
-            */
-
-            #skills ul {
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            }
-
-            .social-icons-contact {
-                flex-direction: column;
-                gap: 20px;
-            }
-        }
-        /* ===== Interests Section ===== */
-#interests {
-    background: rgba(30, 30, 30, 0.9);
-    padding: 50px 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px var(--shadow-light);
-    margin-bottom: 80px;
-}
-
-#interests h2 {
-    font-size: 36px;
-    margin-bottom: 25px;
-    color: var(--secondary-color);
-    position: relative;
-    padding-bottom: 10px;
-    display: inline-block;
-}
-
-#interests h2::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 60%;
-    height: 4px;
-    background: var(--primary-color);
-    border-radius: 2px;
-    transition: width 0.3s ease-out;
-}
-
-#interests:hover h2::after {
-    width: 100%;
-}
-
-.interest-content p {
-    font-size: 1em;
-    color: var(--light-text);
-    margin-bottom: 18px;
-    line-height: 1.7;
-}
-
-    </style>
+    <title>Balaji Yalburgi | Software Test Engineer Portfolio</title>
+    <meta name="description"
+        content="Balaji Yalburgi — Software Test Engineer specializing in Manual & Automation Testing, Selenium, Postman, Appium, and Agile QA workflows.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <svg style="width:0;height:0;position:absolute;">
+        <defs>
+            <linearGradient id="cyan-purple-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#2563eb" />
+                <stop offset="100%" stop-color="#7c3aed" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <!-- Header -->
+    <header id="navbar">
         <nav>
-            <div class="logo">Balaji.dev</div>
-            <button class="menu-toggle" aria-label="Toggle navigation">
+            <div class="logo">Balaji.Yalburgi</div>
+            <button class="menu-toggle" aria-label="Toggle navigation" id="menuBtn">
                 <i class="fas fa-bars"></i>
             </button>
-            <ul>
+            <ul id="navLinks">
                 <li><a href="#about" class="active">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#interests">Interests</a></li>
+                <li><a href="#qa-console">Console</a></li>
+                <li><a href="#certifications">Certs</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="https://drive.google.com/uc?export=download&id=1jk2D4puHndED0gNmzZO4vlXkCdss37Vp"
+                        class="btn-outline resume-btn-nav" target="_blank">Resume <i class="fas fa-download"></i></a>
+                </li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section class="hero">
-            <div id="particles-js"></div>
-            <h1>Hey, I'm <span>Balaji Yalburgi</span></h1>
-            <p>Engineering Innovation, One Line of Code at a Time.<br> <small></small>📱 Interests & Tech Obsessions</small></h2>
-            </p>
-            
-            <a href="https://drive.google.com/file/d/1Gqg18O1jxuk9XsROKUwO_6AA05VRUGvI/view?usp=drivesdk" class="resume-btn" target="_blank" download="Balaji_Yalburgi_Resume.pdf">Download Resume</a>
-        </section>
-        
-        <section id="about">
-            <h2>About Me</h2>
-            <p>Driven by a passion for crafting intelligent solutions through the synergy of Artificial Intelligence (leveraging frameworks like TensorFlow and PyTorch), scalable Cloud Computing (with expertise in AWS and Azure), efficient Automation practices, and robust Cybersecurity strategies. Currently immersed in exploring the potential of Decentralized Technologies and Serverless Architectures. My coding philosophy centers around creating elegant, maintainable solutions that not only address present challenges but are also adaptable to future technological landscapes.</p>
-            <p>Beyond coding, I'm an enthusiastic tech explorer, constantly diving into the latest gadgets, experiencing cutting-edge technologies, and staying on top of new mobile innovations and emerging tech trends. I love to understand how things work and how they can shape our future.</p>
-            <img src="https://via.placeholder.com/800x400?text=Your+Professional+Image" alt="About Me" style="width: 100%; border-radius: 10px; margin-top: 30px; opacity: 0.9; transition: opacity 0.3s ease;" onerror="this.style.display='none'">
-        </section>
+    <!-- Hero Section Wrapper -->
+    <div class="hero-wrapper" style="position: relative; overflow: hidden; width: 100%;">
+        <canvas id="techParticleCanvas"
+            style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></canvas>
 
-        <section id="experience">
-            <h2>Experience</h2>
-            <div class="experience-item">
-                <img src="sp.jpeg" alt="SensOps Tech Solutions" onerror="this.src='https://via.placeholder.com/70?text=Company'">
-                <div>
-                    <h3>Frontend Developer Intern @ SensOps Tech Solutions</h3>
-                    <p>Worked as a Frontend Developer Intern at SensOps Tech Solutions, contributing to the design and development of responsive web interfaces. Collaborated closely with the backend team to integrate APIs and ensure seamless user experience across platforms.</p>
+        <!-- Floating background icons -->
+        <div class="floating-icons-container">
+            <i class="floating-icon fas fa-bug"></i>
+            <i class="floating-icon fas fa-vial"></i>
+            <i class="floating-icon fas fa-code"></i>
+            <i class="floating-icon fas fa-shield-halved"></i>
+            <i class="floating-icon fas fa-database"></i>
+            <i class="floating-icon fas fa-terminal"></i>
+            <i class="floating-icon fas fa-robot"></i>
+            <i class="floating-icon fas fa-laptop-code"></i>
+        </div>
+
+        <!-- Hero Grid -->
+        <div class="hero" id="home">
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fas fa-circle"></i> Available for opportunities</div>
+                <h5 class="hero-subtitle"><span class="typewriter-text" id="typewriter"></span></h5>
+                <h1>Software Test Engineer<br>building <span>quality-first</span> software.</h1>
+                <p>I'm Balaji Yalburgi — I specialize in Manual & Automation testing for Fintech apps. From writing test
+                    cases to debugging APIs, I ensure every release meets the highest quality bar.</p>
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="scrollToConsole()"><i class="fas fa-terminal"></i> Run Test
+                        Console</button>
+                    <a href="https://drive.google.com/uc?export=download&id=1jk2D4puHndED0gNmzZO4vlXkCdss37Vp"
+                        class="btn-outline" target="_blank"><i class="fas fa-file-pdf"></i> Download Resume</a>
                 </div>
             </div>
 
-            <div class="experience-item">
-                <img src="sp.jpeg" alt="SensOps Tech Solutions" onerror="this.src='https://via.placeholder.com/70?text=Company'">
-                <div>
-                    <h3>Software Engineer Intern @ SensOps Tech Solutions</h3>
-                    <p>Spearheaded the development of automation workflows using Python and Ansible, leading to a 15% reduction in deployment times. Integrated AI-powered anomaly detection systems, enhancing the proactive monitoring capabilities of cloud infrastructure on AWS. Actively participated in CI/CD pipeline optimization and the deployment of real-world, scalable solutions.</p>
+            <div class="hero-stats-card">
+                <!-- Card Tabs -->
+                <div class="card-tabs">
+                    <button class="tab-btn active" onclick="switchHeroTab('stats')"><i class="fas fa-chart-bar"></i>
+                        Dashboard</button>
+                    <button class="tab-btn" onclick="switchHeroTab('qa-lab')"><i class="fas fa-laptop-code"></i>
+                        Interactive QA Lab</button>
                 </div>
-            </div>
 
-            <div class="experience-item">
-                <img src="ed.png" alt="Edureka!" onerror="this.src='https://via.placeholder.com/70?text=Company'">
-                <div>
-                    <h3>Data Analyst Intern @ Edureka!</h3>
-                    <p>Architected and implemented a Convolutional Neural Network (CNN) using Keras for earthquake prediction, achieving an accuracy rate of 85% through rigorous analysis of extensive seismic datasets. Developed early warning system prototypes, demonstrating the practical application of advanced machine learning techniques in critical real-world scenarios.</p>
-                </div>
-            </div>
-
-            <div class="experience-item">
-                <img src="suven.png" alt="Suven Technologies" onerror="this.src='https://via.placeholder.com/70?text=Company'">
-                <div>
-                    <h3>Frontend Developer @ Suven Technologies</h3>
-                    <p>"Highly motivated aspiring Frontend Developer with a strong foundation in React, HTML, CSS, and JavaScript eager to contribute to your team and craft engaging user experiences. Seeking a Frontend Development Internship to leverage my skills in responsive design and UI principles and gain practical experience in building innovative web applications."</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-            <div id="projects-container">
-                <div class="project">
-                    <img src="plant.jpg" alt="Plant Health AI Detection" onerror="this.src='https://via.placeholder.com/300x200?text=Plant+Health+AI'">
-                    <div class="project-details">
-                        <h3>Plant Health AI Detection</h3>
-                        <p>Engineered an intelligent system leveraging deep learning with TensorFlow and a sophisticated CNN architecture to accurately identify and classify diseases in plant foliage. The project incorporates a recommendation engine suggesting appropriate treatments, significantly boosting agricultural efficiency and yield.</p>
-                        <p class="tech-stack"><strong>Tech:</strong> Python, TensorFlow, Keras, OpenCV, Image Processing</p>
+                <!-- Tab 1: Stats & Tech -->
+                <div id="hero-tab-stats" class="tab-content active">
+                    <div class="stats-header" style="margin-bottom:14px; padding-bottom:8px;">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>At a Glance</h3>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="1" data-suffix="+">0</span>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="3" data-suffix="+">0</span>
+                            <div class="stat-label">Prod Releases</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="200" data-suffix="+">0</span>
+                            <div class="stat-label">Test Cases</div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="7" data-suffix="">0</span>
+                            <div class="stat-label">Certifications</div>
+                        </div>
+                    </div>
+                    <div class="tech-marquee">
+                        <div class="tech-ticker-track">
+                            <span class="tech-tag"><i class="fas fa-robot"></i> Selenium</span>
+                            <span class="tech-tag"><i class="fas fa-paper-plane"></i> Postman</span>
+                            <span class="tech-tag"><i class="fas fa-tablet-alt"></i> Appium</span>
+                            <span class="tech-tag"><i class="fas fa-file-code"></i> TestNG</span>
+                            <span class="tech-tag"><i class="fab fa-js"></i> Cypress</span>
+                            <span class="tech-tag"><i class="fas fa-tasks"></i> JIRA</span>
+                            <span class="tech-tag"><i class="fab fa-java"></i> Java</span>
+                            <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+                            <!-- duplicate for loop -->
+                            <span class="tech-tag"><i class="fas fa-robot"></i> Selenium</span>
+                            <span class="tech-tag"><i class="fas fa-paper-plane"></i> Postman</span>
+                            <span class="tech-tag"><i class="fas fa-tablet-alt"></i> Appium</span>
+                            <span class="tech-tag"><i class="fas fa-file-code"></i> TestNG</span>
+                            <span class="tech-tag"><i class="fab fa-js"></i> Cypress</span>
+                            <span class="tech-tag"><i class="fas fa-tasks"></i> JIRA</span>
+                            <span class="tech-tag"><i class="fab fa-java"></i> Java</span>
+                            <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project">
-                    <img src="eargg.jpg" alt="Earthquake Prediction Model" onerror="this.src='https://via.placeholder.com/300x200?text=Earthquake+Prediction'">
-                    <div class="project-details">
-                        <h3>Earthquake Prediction Model</h3>
-                        <p>Developed a cutting-edge prediction model employing an advanced CNN coupled with Long Short-Term Memory (LSTM) networks for in-depth time-series analysis of seismic activities. This model achieves high precision in forecasting potential earthquakes and is designed to provide timely early alerts, crucial for disaster preparedness.</p>
-                        <p class="tech-stack"><strong>Tech:</strong> Python, Keras, LSTM, Time Series Analysis, Data Visualization</p>
+
+                <!-- Tab 2: Interactive QA Lab -->
+                <div id="hero-tab-qa-lab" class="tab-content">
+                    <div class="qa-lab-code-window">
+                        <div class="code-window-header">
+                            <span class="file-name"><i class="fab fa-python"></i> test_api.py</span>
+                            <span class="indicator red" id="lab-indicator"><i class="fas fa-circle"></i> FAILED</span>
+                        </div>
+                        <div class="code-body">
+                            <div class="code-line"><span class="line-num">1</span><span class="code-text"><span
+                                        class="keyword">def</span> <span class="function">test_login</span>():</span>
+                            </div>
+                            <div class="code-line"><span class="line-num">2</span><span class="code-text"> response =
+                                    api.post(<span class="string">"/login"</span>)</span></div>
+                            <div class="code-line"><span class="line-num">3</span><span class="code-text"> assert
+                                    response.code == <span class="number">200</span></span></div>
+                            <div class="code-line"><span class="line-num">4</span><span class="code-text"> assert
+                                    response.body.title == <span class="string"
+                                        id="buggy-string">"Dashboard"</span></span></div>
+                        </div>
                     </div>
-                </div>
-                <div class="project">
-                    <img src="bank.png" alt="Secure Bank Management System" onerror="this.src='https://via.placeholder.com/300x200?text=Bank+Management'">
-                    <div class="project-details">
-                        <h3>Secure Bank Management System</h3>
-                        <p>Architected and implemented a robust and secure Bank Management System powered by Python and PostgreSQL. The system prioritizes data integrity and security, featuring comprehensive transaction handling, secure user account management with multi-factor authentication, and detailed audit logging adhering strictly to ACID properties.</p>
-                        <p class="tech-stack"><strong>Tech:</strong> Python, PostgreSQL, SQL, Database Design, Security Protocols</p>
+                    <div class="qa-lab-console">
+                        <div class="console-header">Console Output</div>
+                        <div class="console-output" id="lab-console-log">Ready to run assertion verification...</div>
                     </div>
-                </div>
-                <div class="project">
-                    <img src="lms.jpg" alt="Leave Management System" onerror="this.src='https://via.placeholder.com/300x200?text=Leave+Management+System'">
-                    <div class="project-details">
-                        <h3>Leave Management System</h3>
-                        <p>Designed and deployed a role-based Leave Management System (LMS) using PHP and PostgreSQL. The system supports employees, managers, and admin roles with secure login, leave application workflows, approval tracking, policy enforcement, and a full calendar view for managing and visualizing leave data efficiently.</p>
-                        <p class="tech-stack"><strong>Tech:</strong> PHP, PostgreSQL, HTML, CSS, JavaScript, FullCalendar.js</p>
+                    <div class="qa-lab-actions">
+                        <button class="btn-primary btn-sm" id="btn-run-lab" onclick="runLabTest()"><i
+                                class="fas fa-play"></i> Run Test</button>
+                        <button class="btn-outline btn-sm" id="btn-fix-lab" onclick="fixLabBug()"><i
+                                class="fas fa-wrench"></i> Fix Assertion Bug</button>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <section id="skills">
-            <h2>Skills & Technologies</h2>
-            <ul id="skills-list">
-                <li data-description="Proficient in Python for scripting and development.">
-                    <i class="fab fa-python"></i> <span>Python</span>
-                </li>
-                <li data-description="Creating features for machine learning models.">
-                    <i class="fas fa-microchip"></i> <span>Feature Engineering</span>
-                </li>
-                <li data-description="Building and training neural networks.">
-                    <i class="fas fa-brain"></i> <span>Deep Learning</span>
-                </li>
-                <li data-description="Web development with HTML5 and CSS3.">
-                    <i class="fab fa-html5"></i> <span>HTML/CSS</span>
-                </li>
-                <li data-description="Machine learning techniques and algorithms.">
-                    <i class="fas fa-robot"></i> <span>Machine Learning</span>
-                </li>
-                <li data-description="Fundamentals of computer networks and protocols.">
-                    <i class="fas fa-network-wired"></i> <span>Networking</span>
-                </li>
-                <li data-description="Protecting computer systems and data from threats.">
-                    <i class="fas fa-shield-alt"></i> <span>Cyber Security</span>
-                </li>
-                <li data-description="Cloud services and solutions from Microsoft Azure.">
-                    <i class="fab fa-microsoft"></i> <span>Azure</span>
-                </li>
-                <li data-description="Analyzing and interpreting complex datasets.">
-                    <i class="fas fa-chart-line"></i> <span>Data Analytics</span>
-                </li>
-                <li data-description="Cloud computing services from Amazon Web Services.">
-                    <i class="fab fa-aws"></i> <span>AWS</span>
-                </li>
-                <li data-description="General-purpose, object-oriented programming language.">
-                    <i class="fab fa-java"></i> <span>Java</span>
-                </li>
-                <li data-description="Database management systems and SQL queries.">
-                    <i class="fas fa-database"></i> <span>DBMS/SQL</span>
-                </li>
-                <li data-description="Core functions and administration of operating systems.">
-                    <i class="fas fa-laptop-code"></i> <span>Operating Systems</span>
-                </li>
-                <li data-description="Proficiency in Microsoft Office Suite applications.">
-                    <i class="fas fa-file-alt"></i> <span>MS Office</span>
-                </li>
-                <li data-description="Effective verbal and written communication skills.">
-                    <i class="fas fa-comments"></i> <span>Communication</span>
-                </li>
-                <li data-description="Guiding and directing a team towards common goals.">
-                    <i class="fas fa-users-gear"></i> <span>Leadership</span>
-                </li>
-                <li data-description="Analytical thinking and problem-solving abilities.">
-                    <i class="fas fa-lightbulb"></i> <span>Qualitative Thinking</span>
-                </li>
-                <li data-description="System-level programming with C and C++.">
-                    <i class="fab fa-cuttlefish"></i> <span>C/C++</span>
-                </li>
-            </ul>
-            <div id="skill-description" class=""></div>
-        </section>
-
-<section id="interests">
-    <h2>Interests</h2>
-    <div class="interest-content">
-        <p>I'm a tech enthusiast who thrives on exploring the latest gadgets, smart devices, and next-gen innovations. Whether it's testing out the newest smartphones, diving into futuristic AR/VR gear, or following the latest trends in AI and automation—I'm always curious and hands-on.</p>
-        <p>I love experimenting with beta features, customizing UIs, and experiencing technology before it hits the mainstream. If it's new, smart, or disruptive—I'm in.</p>
+        </div>
     </div>
-</section>
 
+    <!-- Main -->
+    <main>
+        <!-- About -->
+        <section id="about">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Background and core strengths</p>
+            </div>
+            <div class="about-container">
+                <div class="about-text">
+                    <p>I am a dedicated <strong>Software Test Engineer</strong> with 1 year of hands-on experience
+                        validating Fintech mobile and web applications within fast-paced Agile/Scrum environments. My
+                        expertise spans the complete Software Testing Life Cycle (STLC) — from dissecting user stories
+                        and designing meticulous test cases to executing regression suites, managing defect lifecycles,
+                        and validating APIs.</p>
+                    <p>I am highly comfortable operating across full test runs using tools like <strong>Selenium
+                            WebDriver, Appium, TestNG, and Postman</strong>. In every project, I build close loops with
+                        developers to trace defects down to their root cause, enabling rapid resolution and higher
+                        deployment confidence.</p>
+                    <div class="about-strengths">
+                        <div class="strength-card">
+                            <i class="fas fa-bug"></i>
+                            <div class="strength-info">
+                                <h4>Detailed Defect Logging</h4>
+                                <p>Clear, actionable reports in JIRA with logs, payloads, and reproduction steps.</p>
+                            </div>
+                        </div>
+                        <div class="strength-card">
+                            <i class="fas fa-sync-alt"></i>
+                            <div class="strength-info">
+                                <h4>Full Test Cycle Ownership</h4>
+                                <p>Functional, exploratory, regression, sanity, and integration test runs.</p>
+                            </div>
+                        </div>
+                        <div class="strength-card">
+                            <i class="fas fa-laptop-code"></i>
+                            <div class="strength-info">
+                                <h4>Fast Technical Adaptability</h4>
+                                <p>Quick to configure automation environments and adapt to complex architectures.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-side">
+                    <div class="info-card">
+                        <h4><i class="fas fa-user"></i> Quick Info</h4>
+                        <ul class="info-list">
+                            <li><span>Location</span><span>Bangalore, India</span></li>
+                            <li><span>Experience</span><span>1+ Year</span></li>
+                            <li><span>Degree</span><span>B.E. Computer Science</span></li>
+                            <li><span>University</span><span>VTU, Karnataka</span></li>
+                        </ul>
+                    </div>
+                    <div class="info-card">
+                        <h4><i class="fas fa-code-branch"></i> Methodology</h4>
+                        <ul class="info-list">
+                            <li><span>Agile / Scrum</span><span>✓</span></li>
+                            <li><span>STLC / SDLC</span><span>✓</span></li>
+                            <li><span>CI/CD Awareness</span><span>✓</span></li>
+                            <li><span>Root Cause Analysis</span><span>✓</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience">
+            <div class="section-header">
+                <h2 class="section-title">Professional Experience</h2>
+                <p class="section-subtitle">Where I've contributed and grown</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-top">
+                            <h3>Software Tester <span>Nviera Technologies (Comviva Mahindra)</span></h3>
+                            <div class="timeline-meta">
+                                <span class="timeline-date">Oct 2025 – Present</span>
+                                <span class="timeline-loc"><i class="fas fa-map-marker-alt"></i> Bangalore</span>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>Author and execute 25–40 test cases per sprint for a Fintech mobile app on Android and
+                                iOS.</li>
+                            <li>Conduct end-to-end integration and UAT, validating 3 major production releases.</li>
+                            <li>Perform REST API validation using Postman — verifying payloads, status codes, and edge
+                                cases.</li>
+                            <li>Log and track 10–20 defects per sprint in JIRA, collaborating with developers for
+                                hotfixes.</li>
+                            <li>Analyze console logs and network traces to isolate UI-to-API breakdowns.</li>
+                            <li>Participate in sprint planning, standups, and release sign-off activities.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-top">
+                            <h3>Software Tester Intern <span>Senseops Tech Solutions Pvt. Ltd</span></h3>
+                            <div class="timeline-meta">
+                                <span class="timeline-date">Feb 2025 – Sep 2025</span>
+                                <span class="timeline-loc"><i class="fas fa-map-marker-alt"></i> Bangalore</span>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>Manual functional, regression, and integration testing on internal web apps.</li>
+                            <li>Transformed requirement documents into structured test cases with 100% coverage.</li>
+                            <li>Logged bugs in JIRA with reproduction steps and performed retesting cycles.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+            <div class="section-header">
+                <h2 class="section-title">Projects</h2>
+                <p class="section-subtitle">QA and development work</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&w=800&q=80"
+                            alt="Plant Health AI Validation">
+                        <div class="project-overlay"><a href="#" aria-label="View Plant Health Project"><i
+                                    class="fas fa-external-link-alt"></i></a></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Plant Health AI Validation</h3>
+                        <p>Test framework to validate Flask interface and backend predictions for a deep-learning plant
+                            disease classifier with edge-case UI inputs.</p>
+                        <div class="project-tags">
+                            <span>Flask</span><span>UI Testing</span><span>Python</span><span>CNN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&w=800&q=80"
+                            alt="Earthquake Prediction Testing">
+                        <div class="project-overlay"><a href="#" aria-label="View Earthquake Prediction Project"><i
+                                    class="fas fa-external-link-alt"></i></a></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Earthquake Prediction Testing</h3>
+                        <p>Time-series verification modules to validate input constraints and prediction triggers on an
+                            LSTM forecasting model.</p>
+                        <div class="project-tags">
+                            <span>LSTM</span><span>Time Series</span><span>Python</span><span>Functional</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800&q=80"
+                            alt="Library Management System">
+                        <div class="project-overlay"><a href="#" aria-label="View Library Management Project"><i
+                                    class="fas fa-external-link-alt"></i></a></div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Library Management System</h3>
+                        <p>CRUD-based library manager with user auth and unit/integration test cases in Java for
+                            transactional consistency.</p>
+                        <div class="project-tags">
+                            <span>Java</span><span>JDBC</span><span>PostgreSQL</span><span>Unit Testing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+            <div class="section-header">
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="section-subtitle">Hover any skill to see details</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skills-wrapper">
+                    <div class="skills-category">
+                        <h3><span class="cat-dot"></span> Testing Types</h3>
+                        <ul class="skills-list">
+                            <li data-description="Executing tests manually to verify layouts, user flows, and application compliance."
+                                data-icon="fas fa-hand-pointer"><i class="fas fa-hand-pointer"></i> <span>Manual
+                                    Testing</span></li>
+                            <li data-description="Validating features conform exactly to user stories and functional requirements."
+                                data-icon="fas fa-check-circle"><i class="fas fa-check-circle"></i> <span>Functional
+                                    Testing</span></li>
+                            <li data-description="Re-running past test cases to confirm new edits don't break existing features."
+                                data-icon="fas fa-history"><i class="fas fa-history"></i> <span>Regression
+                                    Testing</span></li>
+                            <li data-description="Quick checks to verify build stability before deeper test cycles."
+                                data-icon="fas fa-wind"><i class="fas fa-wind"></i> <span>Smoke & Sanity</span></li>
+                            <li data-description="Unscripted testing to find edge-case bugs and discover UI flaws."
+                                data-icon="fas fa-search"><i class="fas fa-search"></i> <span>Exploratory Testing</span>
+                            </li>
+                            <li data-description="Verifying that multiple modules and subsystems interact correctly."
+                                data-icon="fas fa-puzzle-piece"><i class="fas fa-puzzle-piece"></i> <span>Integration
+                                    Testing</span></li>
+                            <li data-description="Confirming the application meets business criteria for customer deployment."
+                                data-icon="fas fa-user-check"><i class="fas fa-user-check"></i> <span>UAT</span></li>
+                            <li data-description="Testing layout and JS compatibility across Chrome, Safari, Firefox, and Edge."
+                                data-icon="fas fa-globe"><i class="fas fa-globe"></i> <span>Cross Browser</span></li>
+                            <li data-description="Validating interactions, responsiveness, and notifications on iOS and Android."
+                                data-icon="fas fa-mobile-alt"><i class="fas fa-mobile-alt"></i> <span>Mobile
+                                    Testing</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3><span class="cat-dot"></span> Automation & Tools</h3>
+                        <ul class="skills-list">
+                            <li data-description="Automated web UI testing with Java/Python bindings and browser drivers."
+                                data-icon="fas fa-robot"><i class="fas fa-robot"></i> <span>Selenium</span></li>
+                            <li data-description="Test runners, parallel execution, and HTML report configurations."
+                                data-icon="fas fa-file-code"><i class="fas fa-file-code"></i> <span>TestNG</span></li>
+                            <li data-description="Modern end-to-end JavaScript tests with visual debugging."
+                                data-icon="fab fa-js"><i class="fab fa-js"></i> <span>Cypress</span></li>
+                            <li data-description="Mobile app testing across physical and simulated Android/iOS devices."
+                                data-icon="fas fa-tablet-alt"><i class="fas fa-tablet-alt"></i> <span>Appium</span></li>
+                            <li data-description="REST API validation, pre-request scripts, response schema checks."
+                                data-icon="fas fa-paper-plane"><i class="fas fa-paper-plane"></i> <span>Postman</span>
+                            </li>
+                            <li data-description="Version control, branching strategies, and codebase maintenance."
+                                data-icon="fab fa-git-alt"><i class="fab fa-git-alt"></i> <span>Git</span></li>
+                            <li data-description="DOM inspection, network tracing, console logs, and layout debugging."
+                                data-icon="fas fa-terminal"><i class="fas fa-terminal"></i> <span>DevTools</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="skills-category">
+                        <h3><span class="cat-dot"></span> Languages & Databases</h3>
+                        <ul class="skills-list">
+                            <li data-description="Core automation framework development and test scripting."
+                                data-icon="fab fa-java"><i class="fab fa-java"></i> <span>Java</span></li>
+                            <li data-description="Automation workflows, ML model validations, and scripting."
+                                data-icon="fab fa-python"><i class="fab fa-python"></i> <span>Python</span></li>
+                            <li data-description="Relational queries, joins, and data state verification."
+                                data-icon="fas fa-database"><i class="fas fa-database"></i> <span>SQL /
+                                    PostgreSQL</span></li>
+                            <li data-description="DOM manipulation, front-end scripting, and validation."
+                                data-icon="fab fa-js-square"><i class="fab fa-js-square"></i> <span>JavaScript</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="skill-detail-panel" id="skillDetails">
+                    <div class="skill-detail-icon"><i class="fas fa-cogs"></i></div>
+                    <h3 class="skill-detail-name">Skill Details</h3>
+                    <p class="skill-detail-text skill-detail-placeholder">Hover over any skill on the left to see
+                        details.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- QA Console -->
+        <section id="qa-console" class="qa-terminal-section">
+            <div class="section-header">
+                <h2 class="section-title">QA Automation Simulator</h2>
+                <p class="section-subtitle">Interactive test runner — try it out</p>
+            </div>
+            <div class="terminal-grid">
+                <div class="terminal-container">
+                    <div class="terminal-header-bar">
+                        <div class="terminal-buttons">
+                            <div class="terminal-btn close"></div>
+                            <div class="terminal-btn minimize"></div>
+                            <div class="terminal-btn maximize"></div>
+                        </div>
+                        <div class="terminal-title">qa-automation.sh</div>
+                        <div style="width:40px;"></div>
+                    </div>
+                    <div class="terminal-body" id="terminalScreen">
+                        <div class="terminal-line info">[SYSTEM] Test framework initialized. Ready.</div>
+                        <div class="terminal-line cmd">run-tests --suite=portfolio --target=balaji.qa</div>
+                        <div class="terminal-line info">[INFO] Click 'Run Test Suite' to begin.</div>
+                    </div>
+                </div>
+
+                <div class="terminal-dashboard">
+                    <div class="circular-gauge">
+                        <svg class="gauge-svg" width="130" height="130">
+                            <circle class="gauge-bg" cx="65" cy="65" r="60" />
+                            <circle class="gauge-progress" id="gaugeCircle" cx="65" cy="65" r="60" />
+                        </svg>
+                        <div class="gauge-value" id="gaugeVal">0%<span>Passed</span></div>
+                    </div>
+                    <button class="btn-primary" id="runTestsBtn" onclick="runAutomatedTestSuite()"><i
+                            class="fas fa-play"></i> Run Test Suite</button>
+                    <div class="dashboard-stats">
+                        <div class="dash-stat">
+                            <div class="stat-label">Passed</div>
+                            <div class="stat-val" id="statTotal">0 / 7</div>
+                        </div>
+                        <div class="dash-stat">
+                            <div class="stat-label">Failed</div>
+                            <div class="stat-val" id="statDefects">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section id="certifications">
+            <div class="section-header">
+                <h2 class="section-title">Certifications</h2>
+                <p class="section-subtitle">Industry credentials and training</p>
+            </div>
+            <div class="certs-grid">
+                <div class="cert-card"><i class="fas fa-certificate"></i>
+                    <div class="cert-info">
+                        <h3>Software Testing (Manual & Automation)</h3>
+                        <p>Core methodologies and framework design.</p>
+                    </div>
+                </div>
+                <div class="cert-card"><i class="fab fa-aws"></i>
+                    <div class="cert-info">
+                        <h3>AWS Cloud Practitioner</h3>
+                        <p>Cloud infrastructure and services.</p>
+                    </div>
+                </div>
+                <div class="cert-card"><i class="fas fa-cloud"></i>
+                    <div class="cert-info">
+                        <h3>Cloud Computing (NPTEL)</h3>
+                        <p>Virtualization and cloud models.</p>
+                    </div>
+                </div>
+                <div class="cert-card"><i class="fab fa-microsoft"></i>
+                    <div class="cert-info">
+                        <h3>Azure Fundamentals</h3>
+                        <p>Core cloud concepts and governance.</p>
+                    </div>
+                </div>
+                <div class="cert-card"><i class="fas fa-shield-alt"></i>
+                    <div class="cert-info">
+                        <h3>Cyber Security (TCS iON & Google)</h3>
+                        <p>Network security and threat vectors.</p>
+                    </div>
+                </div>
+                <div class="cert-card"><i class="fab fa-java"></i>
+                    <div class="cert-info">
+                        <h3>Core Java Programming</h3>
+                        <p>OOP, data structures, and threads.</p>
+                    </div>
+                </div>
+                <div class="cert-card"><i class="fas fa-chart-bar"></i>
+                    <div class="cert-info">
+                        <h3>Data Science Fundamentals</h3>
+                        <p>Statistics and regression modeling.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interests -->
+        <section id="interests">
+            <div class="section-header">
+                <h2 class="section-title">Interests</h2>
+                <p class="section-subtitle">What keeps me curious</p>
+            </div>
+            <div class="interests-box">
+                <p>I stay active in the software community by exploring emerging technologies and following automated
+                    testing industry updates.</p>
+                <div class="interests-tags">
+                    <div class="interest-tag"><i class="fas fa-mobile"></i> New tech gadgets</div>
+                    <div class="interest-tag"><i class="fas fa-robot"></i> AI tools & workflows</div>
+                    <div class="interest-tag"><i class="fas fa-chart-line"></i> Tech industry trends</div>
+                    <div class="interest-tag"><i class="fas fa-users"></i> QA communities & forums</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
         <section id="contact">
-            <h2>Contact Me 💻</h2>
-            <div class="contact-content">
-                <div class="social-icons-contact">
-                    <p>
-                        <a href="https://www.instagram.com/balaji_yalburgi_/" target="_blank" aria-label="Instagram">
-                            <img src="insta.png" alt="Instagram">
-                        </a>
-                        Instagram
-                    </p>
-                    <p>
-                        <a href="https://x.com/Balaji_Yalburgi" target="_blank" aria-label="Twitter">
-                            <img src="Twitter-X-Neon-Logo-Vector.jpg" alt="Twitter">
-                        </a>
-                        Twitter
-                    </p>
-                    <p>
-                        <a href="https://www.linkedin.com/in/balaji-yalburgi-48486b265/" target="_blank" aria-label="LinkedIn">
-                            <img src="lin.png" alt="LinkedIn">
-                        </a>
-                        LinkedIn
-                    </p>
-                    <p>
-                        <a href="https://github.com/balajibalu003" target="_blank" aria-label="GitHub">
-                            <img src="github_logo_icon_143772.png" alt="GitHub">
-                        </a>
-                        GitHub
-                    </p>
-                    <p>
-                        <a href="mailto:balajiyalburgi003@gmail.com" aria-label="Email">
-                            <img src="email-icon-121.png" alt="Email">
-                        </a>
-                        Email
-                    </p>
+            <div class="section-header">
+                <h2 class="section-title">Contact</h2>
+                <p class="section-subtitle">Let's connect</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info-list">
+                    <a href="mailto:balajiyalburgi003@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-detail">
+                            <h4>Email</h4>
+                            <p>balajiyalburgi003@gmail.com</p>
+                        </div>
+                    </a>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-detail">
+                            <h4>Location</h4>
+                            <p>Bangalore, India</p>
+                        </div>
+                    </div>
+                    <a href="https://linkedin.com/in/balaji-yalburgi" target="_blank" class="contact-item">
+                        <i class="fab fa-linkedin-in"></i>
+                        <div class="contact-detail">
+                            <h4>LinkedIn</h4>
+                            <p>linkedin.com/in/balaji-yalburgi</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="contact-socials-grid">
+                    <a href="https://www.linkedin.com/in/balaji-yalburgi-48486b265/" target="_blank"
+                        class="social-card linkedin"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+                    <a href="https://github.com/balajibalu003" target="_blank" class="social-card github"><i
+                            class="fab fa-github"></i><span>GitHub</span></a>
+                    <a href="https://x.com/Balaji_Yalburgi" target="_blank" class="social-card twitter"><i
+                            class="fab fa-x-twitter"></i><span>Twitter / X</span></a>
+                    <a href="https://www.instagram.com/balaji_yalburgi_/" target="_blank"
+                        class="social-card instagram"><i class="fab fa-instagram"></i><span>Instagram</span></a>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p> © 2025 Balaji Yalburgi. All rights reserved.</p>
-        <p>Built with <i class="fas fa-heart" style="color: #e74c3c;"></i> by Balaji Yalburgi</p>
+        <p>&copy; 2026 Balaji Yalburgi. All rights reserved.</p>
+        <p>Built with <i class="fas fa-heart" style="color:#ef4444;"></i> by Balaji Yalburgi</p>
     </footer>
 
     <button id="scrollToTopBtn" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
 
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
-        // ======== JavaScript ========
-
-        // Particle Animation in Hero (Updated for slightly different color)
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: '#00ffff' }, // Aqua color for particles
-                shape: { type: 'circle', stroke: { width: 0, color: '#000000' } },
-                opacity: { value: 0.5, random: true, anim: { enable: false } },
-                size: { value: 3, random: true, anim: { enable: false } },
-                line_linked: { enable: true, distance: 150, color: '#00bfff', opacity: 0.4, width: 1 },
-                move: { enable: true, speed: 3, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
-                modes: {
-                    grab: { distance: 140, line_linked: { opacity: 1 } },
-                    bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
-                    repulse: { distance: 200, duration: 0.4 },
-                    push: { particles_nb: 4 },
-                    remove: { particles_nb: 2 }
-                }
-            },
-            retina_detect: true
-        });
-
-        // Header Scroll Effect
-        const header = document.querySelector('header');
+        // Scroll progress
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            const s = document.documentElement.scrollTop;
+            const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('scrollProgress').style.width = ((s / h) * 100) + '%';
         });
 
-        // Mobile Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navUl = document.querySelector('nav ul');
+        // Typewriter
+        const twEl = document.getElementById('typewriter');
+        const twPhrases = ['Quality Assurance Engineer', 'Automation Test Specialist', 'Manual Testing Expert', 'API Validation Specialist'];
+        let twI = 0, twC = 0, twDel = false;
+        function tw() {
+            const p = twPhrases[twI];
+            twEl.textContent = p.substring(0, twDel ? --twC : ++twC);
+            let d = twDel ? 30 : 60;
+            if (!twDel && twC === p.length) { d = 2000; twDel = true; }
+            else if (twDel && twC === 0) { twDel = false; twI = (twI + 1) % twPhrases.length; d = 300; }
+            setTimeout(tw, d);
+        }
+        setTimeout(tw, 800);
 
-        if (menuToggle) {
-            menuToggle.addEventListener('click', () => {
-                navUl.classList.toggle('show');
-                menuToggle.querySelector('i').classList.toggle('fa-bars');
-                menuToggle.querySelector('i').classList.toggle('fa-times');
+        // Header
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 30));
+
+        // Mobile nav
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+        navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+            navLinks.classList.remove('show');
+            menuBtn.querySelector('i').className = 'fas fa-bars';
+        }));
+
+        // Nav active tracking
+        const navAs = document.querySelectorAll('#navLinks li a:not(.resume-btn-nav)');
+        const sects = document.querySelectorAll('main section');
+        window.addEventListener('scroll', () => {
+            let currentActive = '';
+            sects.forEach(s => {
+                const rect = s.getBoundingClientRect();
+                if (rect.top <= 120 && rect.bottom >= 120) {
+                    currentActive = s.id;
+                }
             });
+            // Bottom of page scroll check
+            if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 15) {
+                if (sects.length > 0) currentActive = sects[sects.length - 1].id;
+            }
+            navAs.forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === '#' + currentActive);
+            });
+        });
 
-            navUl.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (navUl.classList.contains('show')) {
-                        navUl.classList.remove('show');
-                        menuToggle.querySelector('i').classList.remove('fa-times');
-                        menuToggle.querySelector('i').classList.add('fa-bars');
-                    }
+        // Smooth scroll
+        navAs.forEach(a => a.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const el = document.getElementById(targetId);
+            if (el) {
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = el.getBoundingClientRect().top;
+                const elementPosition = elementRect - bodyRect;
+                const offsetPosition = elementPosition - navbar.offsetHeight;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
                 });
-            });
-        } else {
-            console.warn("Mobile menu toggle button not found. Please ensure it's in the HTML.");
-        }
-
-        // Highlight Active Menu Item & Smooth Scrolling
-        const navLinks = document.querySelectorAll('nav ul li a');
-        const sections = document.querySelectorAll('main section');
-        
-        function updateActiveLink() {
-            let currentActiveId = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - header.offsetHeight;
-                const sectionHeight = section.offsetHeight;
-                if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
-                    currentActiveId = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(currentActiveId)) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', updateActiveLink);
-        document.addEventListener('DOMContentLoaded', updateActiveLink);
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - header.offsetHeight,
-                        behavior: 'smooth'
-                    });
-                    navLinks.forEach(navLink => navLink.classList.remove('active'));
-                    this.classList.add('active');
-                }
-            });
-        });
-
-        // Show Scroll To Top Button
-        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                scrollToTopBtn.style.display = "block";
-            } else {
-                scrollToTopBtn.style.display = "none";
             }
-        });
+        }));
 
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        // Scroll to top
+        const sttBtn = document.getElementById('scrollToTopBtn');
+        window.addEventListener('scroll', () => sttBtn.style.display = window.scrollY > 400 ? 'flex' : 'none');
+        sttBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        // Fade-in Sections on Scroll (Intersection Observer)
-        const faders = document.querySelectorAll('main section');
-        const appearOptions = {
-            threshold: 0.2,
-            rootMargin: "0px 0px -100px 0px"
-        };
+        // Intersection observer
+        const obs = new IntersectionObserver((entries, o) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); o.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+        sects.forEach(s => obs.observe(s));
 
-        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('visible');
-                appearOnScroll.unobserve(entry.target);
+        // Stats counter animation
+        function animateCounters() {
+            document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+                const target = parseInt(el.getAttribute('data-target'));
+                const suffix = el.getAttribute('data-suffix') || '';
+                let count = 0;
+                const step = Math.max(1, Math.floor(target / 40));
+                const timer = setInterval(() => {
+                    count += step;
+                    if (count >= target) {
+                        el.textContent = target + suffix;
+                        clearInterval(timer);
+                    } else {
+                        el.textContent = count + suffix;
+                    }
+                }, 30);
             });
-        }, appearOptions);
-
-        faders.forEach(fader => {
-            appearOnScroll.observe(fader);
-        });
-
-        // Interactive Skill Badges with enhanced description display
-        const skillsList = document.getElementById('skills-list');
-        const skillDescriptionBox = document.getElementById('skill-description');
-        const skillItems = skillsList.querySelectorAll('li');
-
-        skillItems.forEach(item => {
-            item.addEventListener('mouseover', function() {
-                const description = this.getAttribute('data-description');
-                if (description) {
-                    skillDescriptionBox.textContent = description;
-                    skillDescriptionBox.classList.add('show');
+        }
+        let countersRan = false;
+        const statsCard = document.querySelector('.hero-stats-card');
+        if (statsCard) {
+            const statsObs = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !countersRan) {
+                    countersRan = true;
+                    animateCounters();
                 }
-            });
+            }, { threshold: 0.3 });
+            statsObs.observe(statsCard);
+        }
 
-            item.addEventListener('mouseout', function() {
-                skillDescriptionBox.classList.remove('show');
-                setTimeout(() => { // Gives time for opacity transition before clearing text
-                    skillDescriptionBox.textContent = '';
-                }, 300);
+        // Skill detail panel
+        const dp = document.getElementById('skillDetails');
+        const dpI = dp.querySelector('.skill-detail-icon i');
+        const dpN = dp.querySelector('.skill-detail-name');
+        const dpT = dp.querySelector('.skill-detail-text');
+        document.querySelectorAll('.skills-list li').forEach(sk => {
+            sk.addEventListener('mouseenter', function () {
+                dp.classList.add('active');
+                dpI.className = this.dataset.icon;
+                dpN.textContent = this.querySelector('span').textContent;
+                dpT.textContent = this.dataset.description;
+                dpT.classList.remove('skill-detail-placeholder');
+            });
+            sk.addEventListener('mouseleave', () => {
+                dp.classList.remove('active');
+                dpI.className = 'fas fa-cogs';
+                dpN.textContent = 'Skill Details';
+                dpT.textContent = 'Hover over any skill on the left to see details.';
+                dpT.classList.add('skill-detail-placeholder');
             });
         });
-    </script>
 
+        // Hero Section Tabs Switcher
+        function switchHeroTab(tabName) {
+            document.querySelectorAll('.card-tabs .tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.hero-stats-card .tab-content').forEach(content => content.classList.remove('active'));
+
+            const clickedBtn = Array.from(document.querySelectorAll('.card-tabs .tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabName));
+            if (clickedBtn) clickedBtn.classList.add('active');
+
+            const activeContent = document.getElementById(`hero-tab-${tabName}`);
+            if (activeContent) activeContent.classList.add('active');
+        }
+
+        // Hero QA Lab interactive logic
+        let labBugFixed = false;
+        let labRunning = false;
+
+        function runLabTest() {
+            if (labRunning) return;
+            labRunning = true;
+            const logEl = document.getElementById('lab-console-log');
+            const runBtn = document.getElementById('btn-run-lab');
+            runBtn.disabled = true;
+            runBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Testing...';
+            logEl.innerHTML = '';
+
+            let line = 0;
+            const steps = [
+                { t: 'info', m: 'Launching pytest runner on test_api.py...' },
+                { t: 'info', m: 'Connecting to mock server v1.0.4...' },
+                { t: 'pass', m: 'API Endpoint responds in 12ms. OK.' }
+            ];
+
+            const interval = setInterval(() => {
+                if (line < steps.length) {
+                    const d = document.createElement('div');
+                    d.className = steps[line].t;
+                    d.textContent = steps[line].m;
+                    logEl.appendChild(d);
+                    line++;
+                } else {
+                    clearInterval(interval);
+                    const finalResult = document.createElement('div');
+                    if (labBugFixed) {
+                        finalResult.className = 'success';
+                        finalResult.textContent = '\n[PASS] test_login() successful!\nAll assertions passed (100% Success).';
+                        document.getElementById('lab-indicator').className = 'indicator green';
+                        document.getElementById('lab-indicator').innerHTML = '<i class="fas fa-circle"></i> PASSED';
+                    } else {
+                        finalResult.className = 'error';
+                        finalResult.textContent = '\n[FAIL] test_login() assertion failed:\nAssertionError: expected "Dashboard" but got "Home".';
+                        document.getElementById('lab-indicator').className = 'indicator red';
+                        document.getElementById('lab-indicator').innerHTML = '<i class="fas fa-circle"></i> FAILED';
+                    }
+                    logEl.appendChild(finalResult);
+                    labRunning = false;
+                    runBtn.disabled = false;
+                    runBtn.innerHTML = '<i class="fas fa-play"></i> Run Test';
+                }
+            }, 500);
+        }
+
+        function fixLabBug() {
+            if (labBugFixed) return;
+            labBugFixed = true;
+            const buggyStr = document.getElementById('buggy-string');
+            if (buggyStr) {
+                buggyStr.textContent = '"Home"';
+                buggyStr.style.color = '#10b981';
+            }
+            const consoleLog = document.getElementById('lab-console-log');
+            consoleLog.innerHTML = 'Bug resolved! The assertion has been updated to expect "Home". Click "Run Test" to confirm.';
+            const fixBtn = document.getElementById('btn-fix-lab');
+            fixBtn.disabled = true;
+            fixBtn.innerHTML = '<i class="fas fa-check"></i> Bug Fixed';
+        }
+
+        // QA Console — gauge capped at 100%
+        const TOTAL = 7;
+        let running = false;
+        function scrollToConsole() {
+            const el = document.getElementById('qa-console');
+            if (el) window.scrollTo({ top: el.offsetTop - navbar.offsetHeight, behavior: 'smooth' });
+        }
+        function runAutomatedTestSuite() {
+            if (running) return;
+            running = true;
+            const btn = document.getElementById('runTestsBtn');
+            const scr = document.getElementById('terminalScreen');
+            const gc = document.getElementById('gaugeCircle');
+            const gv = document.getElementById('gaugeVal');
+            const st = document.getElementById('statTotal');
+            const sd = document.getElementById('statDefects');
+            const circ = 2 * Math.PI * 60;
+            gc.style.strokeDasharray = circ;
+            gc.style.strokeDashoffset = circ;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Executing...';
+            st.textContent = '0 / ' + TOTAL;
+            sd.textContent = '0';
+            gv.innerHTML = '0%<span>Passed</span>';
+            scr.innerHTML = '<div class="terminal-line cmd">run-tests --suite=portfolio --target=balaji.qa</div>';
+            let passed = 0;
+            const logs = [
+                { t: 'info', m: '[INFO] Launching ChromeDriver...' },
+                { t: 'info', m: '[INFO] Navigating to http://balaji.qa/' },
+                { t: 'pass', m: '[PASS] test_html_structure(): Valid HTML5 boilerplate.' },
+                { t: 'info', m: '[INFO] Checking external resources...' },
+                { t: 'pass', m: '[PASS] test_font_awesome(): Assets loaded correctly.' },
+                { t: 'info', m: '[INFO] Profile tests...' },
+                { t: 'pass', m: '[PASS] test_professional_summary(): Data matches resume.' },
+                { t: 'pass', m: '[PASS] test_experience_timeline(): 2 nodes verified.' },
+                { t: 'info', m: '[INFO] Skills validation...' },
+                { t: 'pass', m: '[PASS] test_skill_descriptions(): All 20 verified.' },
+                { t: 'info', m: '[INFO] Responsive checks...' },
+                { t: 'pass', m: '[PASS] test_responsive(): Media queries OK at 768px.' },
+                { t: 'info', m: '[INFO] Download link checks...' },
+                { t: 'pass', m: '[PASS] test_resume_download(): PDF link valid.' },
+                { t: 'info', m: '[INFO] Finalizing...' },
+                { t: 'success', m: '─────────────────────────────────────' },
+                { t: 'success', m: '[RESULT] 7/7 passed · 0 failed · 0 errors ✓' },
+            ];
+            let i = 0;
+            const iv = setInterval(() => {
+                if (i < logs.length) {
+                    const l = logs[i];
+                    const d = document.createElement('div');
+                    d.className = 'terminal-line ' + l.t;
+                    d.textContent = l.m;
+                    scr.appendChild(d);
+                    scr.scrollTop = scr.scrollHeight;
+                    if (l.t === 'pass') {
+                        passed++;
+                        const pct = Math.round((passed / TOTAL) * 100);
+                        st.textContent = passed + ' / ' + TOTAL;
+                        gv.innerHTML = pct + '%<span>Passed</span>';
+                        gc.style.strokeDashoffset = circ - (circ * (pct / 100));
+                    }
+                    i++;
+                } else {
+                    clearInterval(iv);
+                    running = false;
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-redo"></i> Re-Run Suite';
+                }
+            }, 280);
+        }
+
+        // Interactive Moving Tech Particles Animation
+        (function () {
+            const canvas = document.getElementById('techParticleCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            const colors = ['#3b82f6', '#8b5cf6', '#60a5fa', '#c084fc'];
+            let width = canvas.offsetWidth;
+            let height = canvas.offsetHeight;
+            canvas.width = width;
+            canvas.height = height;
+
+            window.addEventListener('resize', () => {
+                if (!canvas) return;
+                width = canvas.offsetWidth;
+                height = canvas.offsetHeight;
+                canvas.width = width;
+                canvas.height = height;
+                init();
+            });
+
+            let mouse = { x: null, y: null, radius: 110 };
+            const parent = document.querySelector('.hero-wrapper');
+            if (parent) {
+                parent.addEventListener('mousemove', (e) => {
+                    const rect = parent.getBoundingClientRect();
+                    mouse.x = e.clientX - rect.left;
+                    mouse.y = e.clientY - rect.top;
+                });
+                parent.addEventListener('mouseleave', () => {
+                    mouse.x = null;
+                    mouse.y = null;
+                });
+            }
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.7;
+                    this.vy = (Math.random() - 0.5) * 0.7;
+                    this.radius = Math.random() * 2 + 1;
+                    this.color = colors[Math.floor(Math.random() * colors.length)];
+                }
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    if (this.x < 0 || this.x > width) this.vx *= -1;
+                    if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                    if (mouse.x !== null && mouse.y !== null) {
+                        const dx = this.x - mouse.x;
+                        const dy = this.y - mouse.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < mouse.radius) {
+                            const force = (mouse.radius - dist) / mouse.radius;
+                            const angle = Math.atan2(dy, dx);
+                            this.x += Math.cos(angle) * force * 3;
+                            this.y += Math.sin(angle) * force * 3;
+                        }
+                    }
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.globalAlpha = 0.35;
+                    ctx.fill();
+                }
+            }
+
+            function init() {
+                particles = [];
+                const count = Math.min(50, Math.floor((width * height) / 18000));
+                for (let i = 0; i < count; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+
+                ctx.globalAlpha = 0.12;
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 90) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = '#60a5fa';
+                            ctx.lineWidth = 0.6;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+
+            init();
+            animate();
+        })();
+    </script>
 </body>
+
 </html>
