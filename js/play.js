@@ -39,7 +39,7 @@
     var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     if (!fine) { box.hidden = true; return; }
 
-    var raf = 0, lastX = -1, lastY = -1, lastTag = '';
+    var raf = 0, lastX = -1, lastY = -1, lastTag = '', live = false;
 
     function paint() {
       raf = 0;
@@ -58,6 +58,7 @@
     document.addEventListener('pointermove', function (e) {
       if (e.pointerType !== 'mouse') return;
       lastX = e.clientX; lastY = e.clientY;
+      if (!live) { live = true; box.classList.add('live'); }
       if (!raf) raf = requestAnimationFrame(paint);
     }, { passive: true });
 
