@@ -21,11 +21,9 @@
   var stored = null;
   try { stored = localStorage.getItem(KEY); } catch (e) {}
 
-  if (stored === 'paper' || stored === 'night') {
-    root.setAttribute('data-theme', stored);
-  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    root.setAttribute('data-theme', 'night');
-  }
+  /* Night is the default. Paper is the alternate, and either choice sticks. */
+  var theme = (stored === 'paper' || stored === 'night') ? stored : 'night';
+  root.setAttribute('data-theme', theme);
 
   var themeBtn = $('#theme');
   if (themeBtn) {

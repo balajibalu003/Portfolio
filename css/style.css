@@ -49,24 +49,24 @@
   --shadow-lg:0 28px 60px -30px rgba(15,16,20,.3),0 6px 16px -8px rgba(15,16,20,.07);
 }
 
-/* night — the same document under a desk lamp */
+/* night — the default canvas */
 [data-theme="night"]{
   color-scheme:dark;
-  --bg:#0c0d10;
-  --bg-alt:#111216;
-  --card:#15161b;
-  --ink:#f1f1ef;
-  --ink-2:#b7b8c0;
-  --ink-3:#8a8b95;
-  --rule:#24252b;
-  --rule-strong:#3b3c44;
-  --accent:#f2623c;
-  --accent-soft:rgba(242,98,60,.14);
-  --verify:#3fbb8c;
-  --tint:rgba(242,98,60,.07);
-  --shadow-sm:0 1px 2px rgba(0,0,0,.5);
-  --shadow-md:0 14px 34px -18px rgba(0,0,0,.75),0 2px 6px -2px rgba(0,0,0,.4);
-  --shadow-lg:0 30px 64px -30px rgba(0,0,0,.9),0 8px 20px -10px rgba(0,0,0,.5);
+  --bg:#0a0b0e;
+  --bg-alt:#101116;
+  --card:#14151b;
+  --ink:#f2f2f0;
+  --ink-2:#babac2;
+  --ink-3:#8b8c96;
+  --rule:#22232a;
+  --rule-strong:#3a3b45;
+  --accent:#ff6b45;
+  --accent-soft:rgba(255,107,69,.15);
+  --verify:#43c292;
+  --tint:rgba(255,107,69,.07);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.55);
+  --shadow-md:0 14px 34px -18px rgba(0,0,0,.8),0 2px 6px -2px rgba(0,0,0,.5);
+  --shadow-lg:0 30px 64px -30px rgba(0,0,0,.95),0 8px 20px -10px rgba(0,0,0,.6);
 }
 
 /* ---------- 2. Reset ---------- */
@@ -266,6 +266,14 @@ body::after{
 .schem-cross path{stroke:var(--rule);stroke-width:1;opacity:.55}
 .schem-nodes rect{fill:var(--accent);stroke:none;opacity:.5}
 .schem-arc{stroke:var(--accent);stroke-width:2;opacity:.55;stroke-linecap:round}
+
+/* thin strokes need more presence against a dark canvas */
+[data-theme="night"] .ln{opacity:.7}
+[data-theme="night"] .ln-soft{opacity:.85}
+[data-theme="night"] .ln-alt{opacity:.5}
+[data-theme="night"] .ln-tick{opacity:.72}
+[data-theme="night"] .schem-cross path{stroke:var(--rule-strong);opacity:.65}
+[data-theme="night"] .schem-read b{color:var(--ink-2)}
 .ln-sweep{
   stroke:var(--accent);stroke-width:2.5;opacity:.7;
   stroke-linecap:round;
@@ -276,16 +284,20 @@ body::after{
 @keyframes spin{to{transform:rotate(-360deg)}}
 @keyframes sweep{0%{transform:rotate(-90deg)}100%{transform:rotate(270deg)}}
 
+.schem-legend{
+  position:absolute;left:2%;top:15%;
+  display:grid;gap:11px;
+}
 .schem-read{
-  position:absolute;
-  font-family:var(--mono);font-size:.68rem;line-height:1.55;
-  letter-spacing:.09em;text-transform:uppercase;
-  display:grid;gap:2px;
+  display:grid;gap:1px;
+  font-family:var(--mono);font-size:.62rem;line-height:1.4;
+  letter-spacing:.1em;text-transform:uppercase;
 }
 .schem-read span{color:var(--accent);opacity:.9}
-.schem-read b{color:var(--ink-3);font-weight:400;font-size:.9em}
-.schem-read{left:2%;top:19%}
-.schem-read-2{top:auto;left:2%;bottom:17%}
+.schem-read b{
+  color:var(--ink-2);font-weight:400;
+  font-size:1.15em;letter-spacing:.05em;
+}
 
 .opening-grid{
   display:grid;
@@ -1133,15 +1145,7 @@ body::after{
     transform:translate(50%,0);
     opacity:.45;
   }
-  .schem-read{display:none}
-  /* hero stacks here — the dial becomes a faint plate behind the spec card */
-  .schem{
-    top:auto;bottom:1%;right:50%;
-    width:min(440px,102vw);
-    transform:translate(50%,0);
-    opacity:.45;
-  }
-  .schem-read{display:none}
+  .schem-legend{display:none}
   .context-grid{grid-template-columns:minmax(0,1fr)}
   .ledger{columns:1}
   .case-ledger-grid,.case-matrix-grid,.case-contract-grid{grid-template-columns:minmax(0,1fr)}

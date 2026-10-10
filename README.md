@@ -9,10 +9,12 @@ Personal site for **Balaji Yalburgi**, Software Test Engineer (QA automation, ma
 ## The idea
 
 The page is set as **an engineer's spec sheet** — the document a tester actually lives in.
-Warm paper, ink, hairline rules, dotted leaders, margin-set metadata, and one proofreader's
-red used only where something is asserted. Type does the work: **Instrument Serif** for
-editorial moments, **IBM Plex Sans** for reading, **IBM Plex Mono** for anything a machine
-would print.
+**Night by default**: a near-black canvas with a drafting-instrument schematic behind the
+hero, a single vermilion accent, hairline rules, dotted leaders and margin-set metadata.
+Paper is one click away via the `Aa` toggle in the masthead.
+
+Type does the work: **Instrument Serif** for editorial moments, **IBM Plex Sans** for
+reading, **IBM Plex Mono** for anything a machine would print.
 
 No gradients, no glass, no glow, no decorative terminals, no counters. Section numbers sit in
 the left margin like a printed document.
@@ -99,8 +101,8 @@ once three discoveries are made, and a 2px hairline tracks scroll at the very to
 - Keyboard: skip link, visible focus rings, `aria-pressed` on filters, `aria-expanded` on row
   toggles, focus returned to the console trigger on close, `~` / `q` / `Esc` shortcuts
 - Responsive and hand-checked from **320px to 1920px**, zero horizontal overflow
-- Paper and night themes; night is the same warm document under a lamp, persisted to
-  `localStorage`
+- **Night by default**, paper as the alternate; either choice is persisted to `localStorage`
+  and applies before first paint, so there is no flash of the wrong theme
 - Print stylesheet
 
 ## Run locally
