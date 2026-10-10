@@ -1,11 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#3ddc84"/>
-      <stop offset="1" stop-color="#1a9d63"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="15" fill="url(#g)"/>
-  <text x="32" y="42" font-family="'JetBrains Mono',ui-monospace,monospace" font-size="27"
-        font-weight="700" fill="#04120a" text-anchor="middle" letter-spacing="-1">BY</text>
+  <rect width="64" height="64" rx="4" fill="#f3f0e8"/>
+  <rect x="4" y="4" width="56" height="56" rx="2" fill="none" stroke="#d9d3c4" stroke-width="1.5"/>
+  <text x="32" y="43" font-family="Georgia,serif" font-size="34" fill="#a83c1e" text-anchor="middle">b</text>
+  <rect x="12" y="51" width="40" height="2" fill="#1a1813"/>
 </svg>

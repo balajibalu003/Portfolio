@@ -1,47 +1,111 @@
 # Balaji Yalburgi — Portfolio
 
-Personal portfolio site for **Balaji Yalburgi**, Software Test Engineer (QA Automation, Manual & API/Mobile Testing), Bangalore, India.
+Personal site for **Balaji Yalburgi**, Software Test Engineer (QA automation, manual & API/mobile testing), Bangalore, India.
 
 > **Live:** https://balajibalu003.github.io/Portfolio/
 
 ---
 
+## The idea
+
+The page is set as **an engineer's spec sheet** — the document a tester actually lives in.
+Warm paper, ink, hairline rules, dotted leaders, margin-set metadata, and one proofreader's
+red used only where something is asserted. Type does the work: **Instrument Serif** for
+editorial moments, **IBM Plex Sans** for reading, **IBM Plex Mono** for anything a machine
+would print.
+
+No gradients, no glass, no glow, no decorative terminals, no counters. Section numbers sit in
+the left margin like a printed document.
+
 ## Stack
 
-Plain **HTML + CSS + vanilla JS** — no build step, no dependencies, no framework.
+Plain **HTML + CSS + vanilla JS**. No build step, no dependencies, no framework.
 
 ```
 PORTFOLIIO/
-├── index.html              # single page, all sections
-├── css/style.css           # design system + full responsive layer
-├── js/main.js              # nav, theme, scroll reveal, counters, typing, skills
-├── js/console.js           # interactive QA Automation Simulator
+├── index.html              # the whole document
+├── css/style.css           # design system + responsive + interactive layer
+├── js/main.js              # nav, theme, scroll spy, reveal, anchors
+├── js/play.js              # the interactive layer (see below)
 ├── assets/
 │   ├── favicon.svg
 │   └── Balaji_Yalburgi_Resume.pdf
-├── .nojekyll               # lets GitHub Pages serve files as-is
+├── .nojekyll               # let GitHub Pages serve files as-is
 └── README.md
 ```
 
 ## Sections
 
-Hero · Stats · About · Skills · QA Automation Simulator · Experience · Projects · Education & Certifications · Contact
+| | |
+|---|---|
+| 01 | Context — the year, and how a defect actually gets closed |
+| 02 | Testing — every test type, what it involves, where it runs |
+| 03 | Toolkit — dotted-leader ledger of tools and practice |
+| 04 | Work — two roles, dates set in the margin |
+| 05 | Projects — three case studies, three different layouts |
+| 06 | Break My UI — an isolated demo with one seeded defect |
+| 07 | Credentials — degree, certifications, languages |
+| 08 | Contact |
 
-## Features
+### Projects get three different layouts
 
-- **Refined QA/terminal theme** — dark mode by default, full light mode, theme persisted to `localStorage`
-- **Fully responsive** — verified layout from 320px phones through tablets, laptops and ≥1700px wide screens
-- **Interactive QA Automation Simulator** — run a 7-test suite, catch the red assertion, patch it, watch the suite go green
-- **Animated stat counters** that tick up when scrolled into view
-- **Skill explorer** — hover/tap any skill for a description of how it's used
-- **Typing effect, scroll-reveal, scroll progress bar, scroll-spy nav, back-to-top**
-- **Accessible** — skip link, semantic HTML, ARIA labels, keyboard support, `prefers-reduced-motion` respected
-- **SEO** — meta description, canonical, Open Graph and Twitter card tags
-- **Print-friendly** stylesheet
+They are three different problems, so they are three different pages:
+
+- **Library Management System** → a *ledger*: modules, operations and the layer each is tested at
+- **AI-Powered Plant Health Detection** → a real *coverage matrix*, vertical column labels, filled cells
+- **Weather Forecasting Web App** → a *contract*: request/response blocks with what was checked
+
+Each also carries a `<details>` "How I approached this" note — progressive disclosure, no JS.
+
+## The interactive layer (`js/play.js`)
+
+Five things, each earning its place. None of them are required to read the page, and all of
+them degrade to plain content if the script fails to load.
+
+**Pointer inspector** *(hero, desktop only)* — a small readout showing live pointer
+coordinates and what sits under the cursor. It reads the page the way a tester inspects one.
+
+**Break My UI** *(section 06)* — a demo incident filter with **one deliberately seeded
+defect**: `INC-106` is stored as `"Closed "` with a trailing space, so the count beside the
+filter and the rows it renders disagree. You have to count the rows to notice — which is the
+point. It has a reveal, a full reset, expandable reproduction notes, and is completely isolated
+from real navigation. Rows render statically, so it still reads correctly without JS.
+
+**Console** *(click the button, or press `~`)* — a real interface over a fixed command map.
+It never evaluates anything.
+
+```
+help        this list          qa       toggle QA annotations
+about       who is typing this theme    paper / night
+projects    jump to projects   defect   read the PORT-0001 write-up
+status      portfolio status   bug      look for trouble
+coffee      a developer-grade beverage
+clear / close
+```
+
+**QA mode** *(press `q`)* — annotates the page with what was actually checked on it
+("sticky offset", "dotted leaders, not chips", "1 seeded defect, fully isolated").
+
+**Do not click** *(footer)* — a button that asks not to be clicked. It escalates.
+
+Hidden touches: the footer reveals *"Exploratory testing completed — you found the human."*
+once three discoveries are made, and a 2px hairline tracks scroll at the very top.
+
+## Craft details
+
+- Reveal-on-scroll is gated behind a `.js` class set in `<head>`, so **the page is never blank
+  if JavaScript fails**
+- `prefers-reduced-motion` respected throughout; the inspector hides itself on touch devices
+- Keyboard: skip link, visible focus rings, `aria-pressed` on filters, `aria-expanded` on row
+  toggles, focus returned to the console trigger on close, `~` / `q` / `Esc` shortcuts
+- Responsive and hand-checked from **320px to 1920px**, zero horizontal overflow
+- Paper and night themes; night is the same warm document under a lamp, persisted to
+  `localStorage`
+- Print stylesheet
 
 ## Run locally
 
-Just open `index.html` in a browser. Or serve it:
+Open `index.html`, or serve it:
 
 ```bash
 npx serve .
@@ -51,39 +115,32 @@ python -m http.server 8000
 
 ## Deploy to GitHub Pages
 
-1. Create a repository named **`Portfolio`** (or push to your existing one).
-2. Push these files to the branch you want to serve (e.g. `main`):
+```bash
+git remote add origin https://github.com/balajibalu003/Portfolio.git
+git push -u origin main --force
+```
 
-   ```bash
-   git init
-   git add .
-   git commit -m "Portfolio site"
-   git branch -M main
-   git remote add origin https://github.com/balajibalu003/Portfolio.git
-   git push -u origin main --force
-   ```
+Then **Settings → Pages → Build and deployment → Deploy from a branch → `main` / `/(root)`**.
 
-3. On GitHub: **Settings → Pages → Build and deployment**
-   - Source: **Deploy from a branch**
-   - Branch: **`main`** / **`/ (root)`** → **Save**
+`.nojekyll` is already included so GitHub Pages serves every file untouched.
 
-4. Your site goes live at `https://balajibalu003.github.io/Portfolio/`
-
-> `.nojekyll` is already included so GitHub Pages serves every file untouched.
-
-## Updating content
-
-All content lives in `index.html`. Common edits:
+## Editing
 
 | Change | Where |
 |---|---|
-| Stats numbers | `data-count` on `.stat-num` in the `stats` block |
-| Skills | `.chip` buttons — label is the text, description goes in `data-detail` |
-| Experience bullets | `.tl-list` items under `#experience` |
-| Projects | `.proj` cards under `#projects` |
-| Certifications | `.cert` cards under `#certs` |
-| Colors / theme | `:root` and `[data-theme]` variables at the top of `css/style.css` |
-| Resume file | replace `assets/Balaji_Yalburgi_Resume.pdf` |
+| Any copy or section | `index.html` |
+| Seeded defect (the trailing space) | `INC-106` in `RAW` in `js/play.js` |
+| Console commands | `HANDLERS` in `js/play.js` |
+| QA-mode annotations | `data-qa="…"` attributes in `index.html` |
+| Colours, type, spacing | `:root` / `[data-theme]` at the top of `css/style.css` |
+| Résumé | replace `assets/Balaji_Yalburgi_Resume.pdf` |
+
+### Content honesty
+
+Everything is drawn from the résumé and the previous site. The one place to check before
+publishing: section 05.3 lists Chrome / Firefox / Safari under "cross-browser" — the résumé
+only says *cross-browser functional tests*, so confirm those are the browsers actually tested,
+or edit that list.
 
 ## Contact
 
@@ -94,4 +151,4 @@ All content lives in `index.html`. Common edits:
 
 ---
 
-© 2026 Balaji Yalburgi. All rights reserved.
+© 2026 Balaji Yalburgi. No bugs were harmed in the making of this portfolio. One was documented.
