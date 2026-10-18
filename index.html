@@ -3,15 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Balaji Yalburgi — Software Test Engineer | QA Automation, Manual &amp; API/Mobile Testing</title>
+<title>Balaji Yalburgi, Software Test Engineer | QA Automation, Manual &amp; API/Mobile Testing</title>
 <meta name="description" content="Software Test Engineer testing fintech applications across Android, iOS, web and USSD. Functional, regression and API testing, plus repeatable automation with Selenium, Appium and Postman.">
 <meta name="author" content="Balaji Yalburgi">
 <link rel="canonical" href="https://balajibalu003.github.io/Portfolio/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Balaji Yalburgi — Software Test Engineer">
+<meta property="og:title" content="Balaji Yalburgi, Software Test Engineer">
 <meta property="og:description" content="Quality is not an accident. I find the edge cases, validate the experience, and help software ship with confidence.">
 <meta property="og:url" content="https://balajibalu003.github.io/Portfolio/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://balajibalu003.github.io/Portfolio/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Quality is not an accident. — Balaji Yalburgi, Software Test Engineer">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://balajibalu003.github.io/Portfolio/assets/og.png">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,8 +44,7 @@ d.dataset.theme=(s==='paper'||s==='night')?s
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
-      <a href="#qa-lab">QA Lab</a>
-      <a href="#contact">Contact</a>
+          <a href="#contact">Contact</a>
     </nav>
 
     <div class="mast-tools">
@@ -62,7 +66,6 @@ d.dataset.theme=(s==='paper'||s==='night')?s
     <a href="#experience"><span>Experience</span></a>
     <a href="#skills"><span>Skills</span></a>
     <a href="#projects"><span>Projects</span></a>
-    <a href="#qa-lab"><span>QA Lab</span></a>
     <a href="#contact"><span>Contact</span></a>
   </nav>
   <div class="drawer-foot">
@@ -103,19 +106,16 @@ d.dataset.theme=(s==='paper'||s==='night')?s
       </ul>
     </div>
 
-    <!-- hero demonstration panel -->
-    <div class="panel runner-panel">
-      <div class="panel-bar">
-        <p class="panel-title">suite<span class="mono-dim">/ demo-regression</span></p>
-        <p class="demo-tag">portfolio demonstration</p>
-      </div>
-      <ul class="runner-out" id="heroOut" role="log" aria-live="polite" aria-label="Demonstration suite output">
-        <li class="r-dim">[SYSTEM] Four predefined scenarios. Nothing here is a production metric.</li>
-      </ul>
-      <div class="panel-foot">
-        <button class="btn btn-sm btn-primary" id="heroRun" type="button">Run suite</button>
-        <p class="runner-tally" id="heroTally">0 / 4 executed</p>
-      </div>
+    <div class="panel fact fact-hero">
+      <p class="fact-h">At a glance</p>
+      <dl class="kv">
+        <div><dt>Experience</dt><dd>1 year</dd></div>
+        <div><dt>Current</dt><dd>Comviva Mahindra</dd></div>
+        <div><dt>Via</dt><dd>Nviera Technologies</dd></div>
+        <div><dt>Surfaces</dt><dd>Android · iOS · Web · USSD</dd></div>
+        <div><dt>Degree</dt><dd>B.E. CSE, VTU</dd></div>
+        <div><dt>Languages</dt><dd>English · Hindi · Kannada</dd></div>
+      </dl>
     </div>
   </div>
 </section>
@@ -131,52 +131,56 @@ d.dataset.theme=(s==='paper'||s==='night')?s
       </div>
     </header>
 
-    <div class="about-grid">
-      <div class="prose">
-        <p class="lead">
-          I've spent the last year testing one fintech application across Android, iOS, the web,
-          and USSD over the mobile network. Same product, four ways of reaching it, and four
-          different sets of failure modes.
-        </p>
-        <p>
-          Most of my work is functional, regression, smoke, sanity and exploratory testing, plus
-          integration and acceptance testing as features move from first build to release. I validate
-          REST APIs in Postman — payloads, status codes and edge cases — before anyone opens the UI.
-        </p>
-        <p>
-          I've automated 50+ smoke and SIT cases so a new build proves itself before a person looks
-          at it. Defects go into Jira with reproduction steps, screenshots and logs, and I retest
-          fixes with the developers until they hold.
-        </p>
-        <p>
-          I also use AI tools to help write test cases, draft test plans and debug automation
-          scripts, which has cut a surprising amount of test preparation time.
-        </p>
+    <div class="prose">
+      <p class="lead">
+        I've spent the last year testing one fintech application across Android, iOS, the web,
+        and USSD over the mobile network. Same product, four ways of reaching it, and four
+        different sets of failure modes.
+      </p>
+      <p>
+        Most of my work is functional, regression, smoke, sanity and exploratory testing, plus
+        integration and acceptance testing as features move from first build to release. I validate
+        REST APIs in Postman (payloads, status codes and edge cases) before anyone opens the UI.
+      </p>
+      <p>
+        I've automated 50+ smoke and SIT cases so a new build proves itself before a person looks
+        at it. Defects go into Jira with reproduction steps, screenshots and logs, and I retest
+        fixes with the developers until they hold.
+      </p>
+      <p>
+        I also use AI tools to help write test cases, draft test plans and debug automation
+        scripts, which has cut a surprising amount of test preparation time.
+      </p>
+    </div>
+
+    <div class="surfaces">
+      <p class="fact-h">Four surfaces, one product</p>
+      <div class="surface-grid">
+        <figure class="surface">
+          <img src="assets/surfaces/android.png" width="360" height="480" loading="lazy"
+               alt="Illustration of an Android phone showing a checklist of test cases, three checked and one outstanding.">
+          <figcaption><b>Android</b><span>Smoke and SIT automation, functional and regression</span></figcaption>
+        </figure>
+        <figure class="surface">
+          <img src="assets/surfaces/ios.png" width="360" height="480" loading="lazy"
+               alt="Illustration of an iPhone showing a list of items with circular check marks.">
+          <figcaption><b>iOS</b><span>The same suite, run against a second platform</span></figcaption>
+        </figure>
+        <figure class="surface">
+          <img src="assets/surfaces/web.png" width="360" height="480" loading="lazy"
+               alt="Illustration of a browser window with an address bar and a page of cards.">
+          <figcaption><b>Web</b><span>Console logs, network traces, DevTools</span></figcaption>
+        </figure>
+        <figure class="surface">
+          <img src="assets/surfaces/ussd.png" width="360" height="480" loading="lazy"
+               alt="Illustration of a feature phone showing a numbered USSD menu above a numeric keypad.">
+          <figcaption><b>USSD</b><span>Menu depth, session timeouts, dropped networks</span></figcaption>
+        </figure>
       </div>
-
-      <aside class="side">
-        <div class="panel fact">
-          <p class="fact-h">At a glance</p>
-          <dl class="kv">
-            <div><dt>Experience</dt><dd>1 year</dd></div>
-            <div><dt>Current</dt><dd>Comviva Mahindra</dd></div>
-            <div><dt>Via</dt><dd>Nviera Technologies</dd></div>
-            <div><dt>Surfaces</dt><dd>Android · iOS · Web · USSD</dd></div>
-            <div><dt>Degree</dt><dd>B.E. CSE, VTU</dd></div>
-            <div><dt>Languages</dt><dd>English · Hindi · Kannada</dd></div>
-          </dl>
-        </div>
-
-        <div class="panel fact">
-          <p class="fact-h">How a defect gets closed</p>
-          <ol class="steps">
-            <li><b>Reproduce it exactly</b><span>Same device, build and screen — otherwise the ticket comes back.</span></li>
-            <li><b>Log it usefully</b><span>Steps, screenshots, console logs, request payloads.</span></li>
-            <li><b>Retest the original path</b><span>The reported flow first, then its neighbours.</span></li>
-            <li><b>Close on evidence</b><span>Not the status change — a clean regression pass.</span></li>
-          </ol>
-        </div>
-      </aside>
+      <p class="small" style="margin-top:18px;max-width:70ch">
+        Same product, four ways of reaching it, and four different sets of failure modes.
+        Illustrations, not screenshots.
+      </p>
     </div>
   </div>
 </section>
@@ -195,23 +199,24 @@ d.dataset.theme=(s==='paper'||s==='night')?s
     <div class="career">
       <article class="post">
         <div class="post-when">
-          <p class="post-dates">Oct 2025 — Present</p>
+          <p class="post-dates">Oct 2025 to Present</p>
           <p class="post-flag">Current</p>
         </div>
         <div class="post-body">
           <h3>Software Tester</h3>
           <p class="post-org">Comviva Mahindra <span class="muted">· contract via Nviera Technologies</span></p>
           <p class="post-scope">Bengaluru, Karnataka</p>
+
           <ul class="bullets">
             <li>Automated 50+ smoke and SIT cases for the Android, iOS and USSD applications, so each new build runs the scripts instead of repeating the tests by hand.</li>
             <li>Performed functional, regression, smoke, sanity and exploratory testing every sprint, with cases written from the user stories themselves.</li>
             <li>Tested new features from first build through release, including integration and acceptance testing.</li>
-            <li>Participated in production releases across 10+ sprints with no major post-release issues.</li>
-            <li>Validated REST API payloads, status codes and edge cases using Postman, before front-end testing.</li>
+            <li>Participated in production releases across 10+ sprints with no major issues after release.</li>
+            <li>Validated REST API payloads, status codes and edge cases using Postman, before testing the interface.</li>
             <li>Reported defects in Jira with reproduction steps, screenshots and logs, then retested fixes with developers until they held.</li>
-            <li>Investigated issues using browser DevTools, console logs and network traces to isolate UI-to-API breakdowns.</li>
+            <li>Investigated issues using browser DevTools, console logs and network traces to isolate problems between the interface and the API.</li>
             <li>Used AI tools to help write test cases, draft test plans and debug automation scripts.</li>
-            <li>Took part in sprint planning, daily stand-ups and release sign-off.</li>
+            <li>Took part in sprint planning, daily standups and release signoff.</li>
           </ul>
           <div class="tag-row"><span>Selenium</span><span>Appium</span><span>TestNG</span><span>Postman</span><span>RestAssured</span><span>Maven</span><span>Jira</span><span>USSD</span></div>
         </div>
@@ -219,16 +224,16 @@ d.dataset.theme=(s==='paper'||s==='night')?s
 
       <article class="post">
         <div class="post-when">
-          <p class="post-dates">Feb 2025 — Sep 2025</p>
+          <p class="post-dates">Feb 2025 to Sep 2025</p>
         </div>
         <div class="post-body">
           <h3>Software Testing Intern</h3>
           <p class="post-org">Senseops Tech Solutions Pvt. Ltd.</p>
           <p class="post-scope">Bengaluru, Karnataka</p>
           <ul class="bullets">
-            <li>Manually tested in-house web applications across functional, regression and integration testing.</li>
+            <li>Manually tested company web applications across functional, regression and integration testing.</li>
             <li>Created test cases from requirement documents and ran the scenarios against them.</li>
-            <li>Reported defects to developers with clear steps to reproduce, then retested fixes before sign-off and worked with them to verify closure.</li>
+            <li>Reported defects to developers with clear steps to reproduce, then retested fixes before signoff and worked with them to verify closure.</li>
           </ul>
           <div class="tag-row"><span>Manual Testing</span><span>Regression</span><span>Integration</span><span>Jira</span></div>
         </div>
@@ -254,8 +259,8 @@ d.dataset.theme=(s==='paper'||s==='night')?s
         <ul>
           <li>Manual Testing</li><li>Functional Testing</li><li>Regression Testing</li>
           <li>Smoke &amp; Sanity</li><li>Exploratory Testing</li><li>SIT</li>
-          <li>UAT</li><li>Release Sign-off</li><li>Black-Box Testing</li>
-          <li>Cross-Browser Testing</li><li>Android</li><li>iOS</li><li>USSD</li>
+          <li>UAT</li><li>Release Signoff</li><li>Black Box Testing</li>
+          <li>Cross Browser Testing</li><li>Android</li><li>iOS</li><li>USSD</li>
         </ul>
       </section>
 
@@ -292,7 +297,7 @@ d.dataset.theme=(s==='paper'||s==='night')?s
       </section>
 
       <section class="skill-group">
-        <h3>AI-Assisted Testing</h3>
+        <h3>AI Assisted Testing</h3>
         <ul class="plain">
           <li>Using AI to help write test cases, draft test plans and debug automation scripts.</li>
         </ul>
@@ -326,6 +331,12 @@ d.dataset.theme=(s==='paper'||s==='night')?s
           <h3>Library Management System</h3>
           <p class="proj-stack">Java · JDBC · SQL</p>
         </header>
+        <figure class="shot">
+          <img src="assets/projects/library.jpg" width="1200" height="675" loading="lazy"
+               alt="Interface mockup of a library management dashboard. A Borrowing Records table lists six loans with an overdue row highlighted, beside a search field and sidebar navigation.">
+          <figcaption class="shot-cap">Interface mockup</figcaption>
+        </figure>
+
         <p class="proj-overview">
           A CRUD system with user login and add, view, update and delete operations. I built it,
           and I wrote the tests.
@@ -347,16 +358,21 @@ d.dataset.theme=(s==='paper'||s==='night')?s
             </ul>
           </div>
         </div>
-        <p class="todo"><b>To complete:</b> repository link, screenshots, specific test cases.</p>
       </article>
 
       <article class="proj" data-cat="manual">
         <header class="proj-h">
-          <h3>AI-Powered Plant Health Detection System</h3>
+          <h3>Plant Health Detection System</h3>
           <p class="proj-stack">Python · CNN · Flask</p>
         </header>
+        <figure class="shot">
+          <img src="assets/projects/plant.jpg" width="1200" height="673" loading="lazy"
+               alt="Interface mockup of a leaf disease detection dashboard. An upload area holds a leaf with dark spots, beside a prediction panel listing leaf spot, rust and healthy with their confidence values.">
+          <figcaption class="shot-cap">Interface mockup</figcaption>
+        </figure>
+
         <p class="proj-overview">
-          A deep-learning plant disease classifier behind a Flask web interface. My part was the
+          A deep learning plant disease classifier behind a Flask web interface. My part was the
           interface, not the model.
         </p>
         <div class="proj-cols">
@@ -372,12 +388,11 @@ d.dataset.theme=(s==='paper'||s==='night')?s
             <h4>Interesting problem</h4>
             <p class="small">
               A wrong classification is a model problem, not a loggable defect. What is mine to test
-              is the Flask layer around it — whether the UI stays honest when the prediction
+              is the Flask layer around it: whether the interface stays honest when the prediction
               underneath is wrong, slow, or missing.
             </p>
           </div>
         </div>
-        <p class="todo"><b>To complete:</b> repository link, screenshots, scenario list.</p>
       </article>
 
       <article class="proj" data-cat="api web">
@@ -385,8 +400,14 @@ d.dataset.theme=(s==='paper'||s==='night')?s
           <h3>Weather Forecasting Web App</h3>
           <p class="proj-stack">HTML · CSS · JavaScript · OpenWeather API</p>
         </header>
+        <figure class="shot">
+          <img src="assets/projects/weather.jpg" width="1200" height="673" loading="lazy"
+               alt="Interface mockup of a weather dashboard. It shows 21 degrees and partly cloudy for Bengaluru, a five day forecast, humidity and wind, and a warning that the upstream returned an empty payload.">
+          <figcaption class="shot-cap">Interface mockup</figcaption>
+        </figure>
+
         <p class="proj-overview">
-          Two halves of one feature: a third-party API that can return anything, and a front end
+          Two halves of one feature: an external API that can return anything, and a front end
           that has to behave sensibly whatever comes back.
         </p>
         <div class="proj-cols">
@@ -394,19 +415,18 @@ d.dataset.theme=(s==='paper'||s==='night')?s
             <h4>What I tested</h4>
             <ul class="ticks">
               <li>OpenWeather API responses checked for accuracy</li>
-              <li>Cross-browser functional testing of the front end</li>
+              <li>Cross browser functional testing of the interface</li>
             </ul>
           </div>
           <div>
             <h4>Interesting problem</h4>
             <p class="small">
-              Any third-party API fails in ways the specification never mentions. The useful question
+              Any external API fails in ways the specification never mentions. The useful question
               was never <em>does the request work</em>, but <em>what does the page do when it
               doesn't</em>.
             </p>
           </div>
         </div>
-        <p class="todo"><b>To complete:</b> demo link, screenshots, browsers tested.</p>
       </article>
     </div>
 
@@ -414,139 +434,11 @@ d.dataset.theme=(s==='paper'||s==='night')?s
   </div>
 </section>
 
-<!-- ══════════ QA LAB ══════════ -->
-<section class="section" id="qa-lab">
-  <div class="wrap">
-    <header class="sec-head">
-      <p class="sec-num">05</p>
-      <div>
-        <h2>QA Lab</h2>
-        <p class="sec-sub">How I think as a tester, made clickable. Everything here is deterministic and self-contained.</p>
-      </div>
-    </header>
-
-    <div class="lab-tabs" role="tablist" aria-label="QA Lab features">
-      <button class="lab-tab is-on" role="tab" id="tab-a" aria-controls="labA" aria-selected="true">A · Break My UI</button>
-      <button class="lab-tab" role="tab" id="tab-b" aria-controls="labB" aria-selected="false" tabindex="-1">B · Test Runner</button>
-      <button class="lab-tab" role="tab" id="tab-c" aria-controls="labC" aria-selected="false" tabindex="-1">C · Edge Cases</button>
-    </div>
-
-    <!-- ── A ── -->
-    <div class="lab-panel" id="labA" role="tabpanel" aria-labelledby="tab-a">
-      <p class="lab-lede">
-        A deliberately imperfect incident filter with <b>one seeded defect</b>. Filter by
-        <em>Closed</em>, then count the rows yourself — a good tester doesn't trust the label.
-      </p>
-
-      <div class="panel defect-panel">
-        <div class="panel-bar">
-          <p class="panel-title">incident-filter<span class="mono-dim">/ v0.3</span></p>
-          <p class="demo-tag">intentionally flawed</p>
-        </div>
-
-        <div class="filters filters-sm" role="group" aria-label="Filter demo incidents by status">
-          <button type="button" class="filter is-on" id="fAll" data-filter="All" aria-pressed="true">All <span class="fc" data-for="All">6</span></button>
-          <button type="button" class="filter" id="fOpen" data-filter="Open" aria-pressed="false">Open <span class="fc" data-for="Open">3</span></button>
-          <button type="button" class="filter" id="fClosed" data-filter="Closed" aria-pressed="false">Closed <span class="fc" data-for="Closed">2</span></button>
-        </div>
-
-        <div class="tbl-wrap">
-          <table class="tbl">
-            <caption class="sr-only">Demo incident list. Its status filter contains one deliberate defect.</caption>
-            <thead><tr><th scope="col">ID</th><th scope="col">Summary</th><th scope="col">Status</th><th scope="col" class="ta-r">Severity</th></tr></thead>
-            <tbody id="defectRows">
-              <tr><th scope="row"><button type="button" class="link-btn" aria-expanded="false">INC-101</button></th><td>MFA challenge loops after retry</td><td class="mono-c">Open</td><td class="ta-r mono-s">High</td></tr>
-              <tr><th scope="row"><button type="button" class="link-btn" aria-expanded="false">INC-102</button></th><td>USSD session times out mid-menu</td><td class="mono-c">Open</td><td class="ta-r mono-s">Critical</td></tr>
-              <tr><th scope="row"><button type="button" class="link-btn" aria-expanded="false">INC-103</button></th><td>Transfer receipt renders blank</td><td class="mono-c">Closed</td><td class="ta-r mono-s">Medium</td></tr>
-              <tr><th scope="row"><button type="button" class="link-btn" aria-expanded="false">INC-104</button></th><td>Duplicate SMS on resend</td><td class="mono-c">Closed</td><td class="ta-r mono-s">High</td></tr>
-              <tr><th scope="row"><button type="button" class="link-btn" aria-expanded="false">INC-105</button></th><td>Wallet balance drifts on retry</td><td class="mono-c">Open</td><td class="ta-r mono-s">Critical</td></tr>
-              <tr><th scope="row"><button type="button" class="link-btn" aria-expanded="false">INC-106</button></th><td>Profile cache goes stale</td><td class="mono-c">Closed</td><td class="ta-r mono-s">Low</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p class="statusline" id="defectStatus" role="status">Filter applied: <b>All</b>.</p>
-        <p class="hintline" id="defectHint" hidden>Count them yourself. A good tester does.</p>
-
-        <div class="panel-actions">
-          <button class="btn btn-primary" id="defectReveal" type="button">Reveal the seeded defect</button>
-          <button class="btn btn-ghost" id="defectReset" type="button">Reset demo</button>
-        </div>
-
-        <div class="answer" id="defectAnswer" hidden>
-          <p class="answer-h"><span class="ticket">PORT-0001</span> Filter count disagrees with rendered rows</p>
-          <dl class="answer-grid">
-            <div><dt>Severity</dt><dd>Low — nothing crashes</dd></div>
-            <div><dt>Found by</dt><dd id="defectWho">you</dd></div>
-            <div><dt>Intentional</dt><dd>yes, seeded for this page</dd></div>
-          </dl>
-          <p><b>What happens.</b> Filtering by <code>Closed</code> renders three incidents, but the number beside the filter says two.</p>
-          <p><b>Why.</b> <code>INC-106</code> is stored as <code>"Closed "</code> with a trailing space. The count compares the raw string; the table renders a trimmed one. Two different answers from the same row — and the label is the one nobody checks.</p>
-          <p><b>The fix.</b> Trim before comparing, and derive the count from the same collection the table renders, so the two can never disagree again.</p>
-          <p class="answer-foot">That is the defect class I look for first. Not a crash — two parts of the interface telling different stories about the same data.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── B ── -->
-    <div class="lab-panel" id="labB" role="tabpanel" aria-labelledby="tab-b" hidden>
-      <p class="lab-lede">
-        Seven deterministic checks. Five run against this page in your browser right now; one is
-        simulated against a hard-coded payload; one is <b>skipped</b> because there is no backend.
-        Nothing here touches a server.
-      </p>
-
-      <div class="panel">
-        <div class="panel-bar">
-          <p class="panel-title">runner<span class="mono-dim">/ browser-checks</span></p>
-          <p class="demo-tag" id="runnerState">idle</p>
-        </div>
-        <ul class="runner-out" id="runnerOut" role="log" aria-live="polite" aria-label="Test runner output">
-          <li class="r-dim">[SYSTEM] Ready. Run the checks.</li>
-        </ul>
-        <div class="panel-foot">
-          <button class="btn btn-primary" id="runnerGo" type="button">Run checks</button>
-          <p class="runner-tally" id="runnerTally">0 run</p>
-        </div>
-      </div>
-
-      <table class="tbl cases-tbl" id="runnerTable">
-        <caption class="sr-only">Predefined demonstration checks, their kind and expected result.</caption>
-        <thead><tr><th scope="col">Check</th><th scope="col">Kind</th><th scope="col">Expected</th></tr></thead>
-        <tbody>
-          <tr data-key="anchors"><th scope="row">Navigation integrity</th><td class="mono-s">live</td><td>Every in-page anchor resolves to a real section</td></tr>
-          <tr data-key="email"><th scope="row">Email format</th><td class="mono-s">live</td><td>Only a syntactically valid address is accepted</td></tr>
-          <tr data-key="contrast"><th scope="row">Body text contrast</th><td class="mono-s">live</td><td>Body text meets 4.5:1 against the page background</td></tr>
-          <tr data-key="viewport"><th scope="row">Responsive breakpoint</th><td class="mono-s">live</td><td>Compact layout engages below 1040px</td></tr>
-          <tr data-key="defect"><th scope="row">Seeded defect still present</th><td class="mono-s">live</td><td>The demo defect is intact and not accidentally fixed</td></tr>
-          <tr data-key="payload"><th scope="row">API response shape</th><td class="mono-s">simulated</td><td>Payload matches the expected schema</td></tr>
-          <tr data-key="timeout"><th scope="row">Network timeout handling</th><td class="mono-s">skipped</td><td>No backend available to test against</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- ── C ── -->
-    <div class="lab-panel" id="labC" role="tabpanel" aria-labelledby="tab-c" hidden>
-      <p class="lab-lede">
-        Six scenarios I've actually had to reason about. Pick what the app should do, then see
-        whether it holds up — including the edge case most people miss.
-      </p>
-      <p class="challenge-progress" id="chProgress" role="status">0 of 6 answered</p>
-
-      <div id="chList" class="challenge-list"></div>
-
-      <div class="panel panel-actions" id="chResetWrap">
-        <button class="btn btn-ghost" id="chReset" type="button">Reset challenge</button>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ══════════ EDUCATION ══════════ -->
 <section class="section section-alt" id="credentials">
   <div class="wrap">
     <header class="sec-head">
-      <p class="sec-num">06</p>
+      <p class="sec-num">05</p>
       <div>
         <h2>Education &amp; Certifications</h2>
         <p class="sec-sub">One degree, seven certifications, three languages.</p>
@@ -587,7 +479,7 @@ d.dataset.theme=(s==='paper'||s==='night')?s
 <section class="section" id="contact">
   <div class="wrap">
     <header class="sec-head">
-      <p class="sec-num">07</p>
+      <p class="sec-num">06</p>
       <div>
         <h2>Contact</h2>
         <p class="sec-sub">Open to QA and test automation roles in Bengaluru, or remote.</p>
@@ -596,7 +488,7 @@ d.dataset.theme=(s==='paper'||s==='night')?s
 
     <p class="contact-lede">
       Recruiters and engineering teams are welcome to get in touch. Email is the fastest way to
-      reach me, and I'd be glad to walk through any of the projects or the QA Lab.
+      reach me, and I'd be glad to walk through any of the projects and what I tested.
     </p>
 
     <ul class="contact-list">
@@ -616,7 +508,7 @@ d.dataset.theme=(s==='paper'||s==='night')?s
     <p>© <span id="year">2026</span> Balaji Yalburgi</p>
     <nav aria-label="Footer">
       <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a>
-      <a href="#projects">Projects</a><a href="#qa-lab">QA Lab</a><a href="#contact">Contact</a>
+      <a href="#projects">Projects</a><a href="#contact">Contact</a>
     </nav>
     <p class="foot-sign">Every bug has a story. Let's find it.</p>
   </div>

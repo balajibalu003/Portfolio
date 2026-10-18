@@ -9,3 +9,14 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Local verification harness. Lives in %TEMP%/opencode, not in the site.
+verify.js
+
+# Source images for the optimised versions in assets/. Kept on disk only:
+# each is a 1.3-1.4 MB PNG that the site does not reference, and pushing it
+# would triple the deployed weight. Delete once the originals are archived.
+assets/projects/*Dashboard.png
+assets/surfaces/*Dashboard*.png
+assets/surfaces/*Dialer*.png
+assets/surfaces/*Wallet*.png
