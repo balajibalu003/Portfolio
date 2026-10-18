@@ -45,26 +45,30 @@
   --ink-3:#65666f;
   --rule:#e4e4df;
   --rule-strong:#c8c8c1;
-  --accent:#c23418;
+  --accent:#b02d14;
+  --accent-glass:#8f2410;
   --accent-soft:rgba(194,52,24,.09);
-  --verify:#0f7a58;
+  --verify:#0c6b4d;
   --tint:rgba(194,52,24,.05);
   --shadow-sm:0 1px 2px rgba(15,16,20,.05),0 1px 1px rgba(15,16,20,.035);
   --shadow-md:0 10px 30px -16px rgba(15,16,20,.22),0 2px 6px -3px rgba(15,16,20,.06);
   --shadow-lg:0 28px 60px -30px rgba(15,16,20,.3),0 6px 16px -8px rgba(15,16,20,.07);
 
-  /* glass on a light ground — white fill, shadow does the work */
-  --g-fill:rgba(255,255,255,.55);
-  --g-fill-2:rgba(255,255,255,.74);
-  --g-edge:linear-gradient(150deg,rgba(255,255,255,.95),rgba(255,255,255,.28) 40%,rgba(15,23,42,.07) 74%,rgba(255,255,255,.5));
-  --g-inner:inset 0 1px 0 rgba(255,255,255,.9);
-  --g-shadow:0 18px 40px -20px rgba(15,23,42,.3),0 2px 6px -2px rgba(15,23,42,.09);
-  --g-shadow-sm:0 6px 16px -8px rgba(15,23,42,.22);
-  --g-well:rgba(15,23,42,.045);
-  --g-well-edge:inset 0 1px 3px rgba(15,23,42,.1);
-  --amb-1:rgba(255,107,69,.12);
-  --amb-2:rgba(90,140,255,.11);
-  --amb-3:rgba(150,100,255,.09);
+  /* glass on a light ground — chromatic rim, white does the lifting */
+  --g-bg:linear-gradient(135deg,rgba(255,255,255,.8),rgba(255,255,255,.52) 45%,rgba(214,190,255,.42));
+  --g-bg-2:linear-gradient(135deg,rgba(255,255,255,.92),rgba(255,255,255,.66) 42%,rgba(226,200,255,.55));
+  --g-edge:linear-gradient(140deg,rgba(255,255,255,.98),rgba(185,220,255,.8) 20%,rgba(255,200,255,.78) 42%,rgba(255,255,255,.55) 64%,rgba(200,190,255,.9));
+  --g-sheen:radial-gradient(120% 85% at 22% 0%,rgba(200,225,255,.55),rgba(255,210,255,.28) 42%,transparent 68%);
+  --g-inner:inset 0 1px 0 rgba(255,255,255,.95);
+  --g-shadow:0 20px 44px -22px rgba(96,52,180,.3),0 2px 8px -3px rgba(15,23,42,.12);
+  --g-shadow-sm:0 8px 18px -10px rgba(110,70,190,.35);
+  --g-well:rgba(28,16,54,.05);
+  --g-well-edge:inset 0 1px 3px rgba(40,20,80,.12),0 0 0 1px rgba(255,255,255,.5);
+  --amb-1:rgba(255,58,174,.16);
+  --amb-2:rgba(58,174,255,.16);
+  --amb-3:rgba(150,80,255,.15);
+  --amb-4:rgba(0,210,255,.12);
+  --amb-5:rgba(255,108,86,.10);
 }
 
 /* night — the default canvas */
@@ -74,11 +78,13 @@
   --bg-alt:#101116;
   --card:#14151b;
   --ink:#f2f2f0;
-  --ink-2:#babac2;
-  --ink-3:#8b8c96;
+  --ink-2:#c6c7cf;
+  --ink-3:#9d9ea8;
   --rule:#22232a;
   --rule-strong:#3a3b45;
   --accent:#ff6b45;
+  /* the accent loses bite against saturated glass — this is the legible variant */
+  --accent-glass:#ffbd9c;
   --accent-soft:rgba(255,107,69,.15);
   --verify:#43c292;
   --tint:rgba(255,107,69,.07);
@@ -86,18 +92,21 @@
   --shadow-md:0 14px 34px -18px rgba(0,0,0,.8),0 2px 6px -2px rgba(0,0,0,.5);
   --shadow-lg:0 30px 64px -30px rgba(0,0,0,.95),0 8px 20px -10px rgba(0,0,0,.6);
 
-  /* glass on a dark ground — light fill, bright specular */
-  --g-fill:rgba(255,255,255,.055);
-  --g-fill-2:rgba(255,255,255,.095);
-  --g-edge:linear-gradient(150deg,rgba(255,255,255,.42),rgba(255,255,255,.05) 40%,rgba(255,255,255,.02) 70%,rgba(255,255,255,.13));
-  --g-inner:inset 0 1px 0 rgba(255,255,255,.15);
-  --g-shadow:0 18px 44px -22px rgba(0,0,0,.85),0 2px 8px -3px rgba(0,0,0,.55);
-  --g-shadow-sm:0 8px 20px -12px rgba(0,0,0,.7);
-  --g-well:rgba(0,0,0,.3);
-  --g-well-edge:inset 0 1px 3px rgba(0,0,0,.55);
-  --amb-1:rgba(255,107,69,.17);
-  --amb-2:rgba(76,140,255,.14);
-  --amb-3:rgba(150,100,255,.12);
+  /* glass on a dark ground — iridescent fill, chromatic rim */
+  --g-bg:linear-gradient(135deg,rgba(255,255,255,.13),rgba(255,255,255,.03) 45%,rgba(196,152,255,.16));
+  --g-bg-2:linear-gradient(135deg,rgba(255,255,255,.19),rgba(255,255,255,.05) 42%,rgba(210,160,255,.22));
+  --g-edge:linear-gradient(140deg,rgba(130,255,255,.82),rgba(130,170,255,.38) 16%,rgba(255,130,255,.62) 38%,rgba(255,190,130,.3) 58%,rgba(130,255,225,.5) 78%,rgba(180,150,255,.78));
+  --g-sheen:radial-gradient(120% 85% at 22% 0%,rgba(170,210,255,.28),rgba(255,170,255,.1) 42%,transparent 68%);
+  --g-inner:inset 0 1px 0 rgba(255,255,255,.3);
+  --g-shadow:0 20px 50px -22px rgba(126,62,205,.55),0 2px 10px -3px rgba(0,0,0,.6);
+  --g-shadow-sm:0 8px 22px -10px rgba(140,80,220,.6);
+  --g-well:rgba(6,6,14,.42);
+  --g-well-edge:inset 0 1px 3px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.05);
+  --amb-1:rgba(255,58,174,.34);
+  --amb-2:rgba(58,174,255,.32);
+  --amb-3:rgba(150,80,255,.30);
+  --amb-4:rgba(0,210,255,.22);
+  --amb-5:rgba(255,108,86,.18);
 }
 
 /* ---------- 1b. Glass material system ----------
@@ -121,32 +130,49 @@
   z-index:2;
 }
 
+/* the iridescent sheen — a slow specular sweep across the glass face */
+.glass::after,.glass-panel::after,.glass-nav::after{
+  content:"";
+  position:absolute;inset:0;
+  border-radius:inherit;
+  background:var(--g-sheen);
+  background-size:200% 200%;
+  z-index:0;
+  pointer-events:none;
+  animation:sheen 11s var(--ease) infinite alternate;
+}
+@keyframes sheen{
+  from{background-position:0% 0%;opacity:.75}
+  to{background-position:100% 100%;opacity:1}
+}
+
 @supports (backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)){
   .glass,.glass-panel,.glass-nav{
-    background:var(--g-fill);
-    -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-sat));
-            backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-sat));
+    background:var(--g-bg);
+    -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(240%) brightness(1.08);
+            backdrop-filter:blur(var(--glass-blur)) saturate(240%) brightness(1.08);
     box-shadow:var(--g-inner),var(--g-shadow);
   }
   .glass-panel{
-    background:var(--g-fill-2);
-    box-shadow:var(--g-inner),var(--g-shadow),0 28px 60px -30px rgba(0,0,0,.55);
+    background:var(--g-bg-2);
+    box-shadow:var(--g-inner),var(--g-shadow),0 30px 64px -32px rgba(110,50,190,.6);
   }
   .glass-nav{
-    background:color-mix(in srgb,var(--bg) 55%,transparent);
-    -webkit-backdrop-filter:blur(26px) saturate(200%);
-            backdrop-filter:blur(26px) saturate(200%);
+    background:color-mix(in srgb,var(--bg) 52%,transparent);
+    -webkit-backdrop-filter:blur(28px) saturate(250%) brightness(1.06);
+            backdrop-filter:blur(28px) saturate(250%) brightness(1.06);
     box-shadow:var(--g-inner);
   }
   .glass-nav.is-stuck{
-    background:color-mix(in srgb,var(--bg) 82%,transparent);
-    box-shadow:var(--g-inner),0 1px 0 var(--rule),0 10px 26px -18px rgba(0,0,0,.6);
+    background:color-mix(in srgb,var(--bg) 80%,transparent);
+    box-shadow:var(--g-inner),0 1px 0 rgba(255,255,255,.08),0 12px 28px -18px rgba(120,60,200,.6);
   }
 }
 /* no backdrop-filter support — fall back to opaque surfaces */
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   .glass,.glass-panel,.glass-nav{background:var(--card);box-shadow:var(--g-shadow)}
   .glass-nav{background:var(--bg)}
+  .glass::after,.glass-panel::after,.glass-nav::after{display:none}
 }
 
 /* concave tier — recessed wells, no drop shadow */
@@ -180,16 +206,19 @@ body{
 }
 
 /* ---------- 2b. Ambient field ----------
-   Glass has nothing to refract against a flat canvas, so the page carries a
-   fixed wash behind everything. Broad and heavily blurred — tonal, not shapes. */
+   This is the light the glass refracts. Broad, heavily blurred colour fields —
+   tonal at the edges, saturated where the eye lands. */
 body::before{
-  content:"";position:fixed;inset:-6%;z-index:-1;
+  content:"";position:fixed;inset:-8%;z-index:-1;
   background:
-    radial-gradient(46% 34% at 16% 4%,  var(--amb-1), transparent 62%),
-    radial-gradient(42% 32% at 88% 14%, var(--amb-2), transparent 64%),
-    radial-gradient(58% 40% at 62% 92%, var(--amb-3), transparent 66%);
-  filter:blur(70px);
-  opacity:.9;
+    radial-gradient(40% 34% at 12% 5%,   var(--amb-1), transparent 62%),
+    radial-gradient(38% 30% at 88% 10%,  var(--amb-2), transparent 64%),
+    radial-gradient(46% 40% at 74% 46%,  var(--amb-3), transparent 66%),
+    radial-gradient(44% 38% at 18% 72%,  var(--amb-4), transparent 66%),
+    radial-gradient(36% 32% at 94% 88%,  var(--amb-5), transparent 64%),
+    radial-gradient(60% 45% at 50% 50%,  var(--amb-3), transparent 70%);
+  filter:blur(80px) saturate(150%);
+  opacity:.85;
   pointer-events:none;
 }
 img,svg{display:block;max-width:100%}
@@ -279,8 +308,8 @@ table{border-collapse:collapse;width:100%}
   height:30px;width:0;
   transform:translateY(-50%);
   border-radius:100px;
-  background:var(--g-fill-2);
-  box-shadow:var(--g-inner),var(--g-shadow-sm);
+  background:linear-gradient(150deg,rgba(255,255,255,.22),rgba(190,150,255,.3));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 8px 20px -10px rgba(170,90,240,.7);
   opacity:0;pointer-events:none;z-index:1;
   transition:transform .42s var(--spring),width .42s var(--spring),
              opacity .28s var(--ease),background .3s var(--ease);
@@ -471,7 +500,7 @@ body::after{
 }
 .colo-head{
   font-family:var(--mono);font-size:var(--step--1);
-  letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+  letter-spacing:.1em;text-transform:uppercase;color:var(--accent-glass);
   padding-bottom:14px;margin-bottom:4px;
   border-bottom:1px solid var(--rule);
 }
@@ -482,7 +511,7 @@ body::after{
 .colophon dl>div:last-child{border-bottom:0}
 .colophon dt{
   font-family:var(--mono);font-size:var(--step--1);
-  color:var(--ink-3);flex:0 0 auto;letter-spacing:.02em;
+  color:var(--ink-2);flex:0 0 auto;letter-spacing:.02em;
 }
 .colophon dd{
   display:flex;align-items:baseline;gap:10px;flex:1 1 auto;
@@ -584,7 +613,7 @@ body::after{
 .matrix thead th{
   font-family:var(--mono);font-size:var(--step--1);
   font-weight:400;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--ink-3);text-align:left;
+  color:var(--ink-2);text-align:left;
   padding:0 24px 12px 0;border-bottom:1px solid var(--rule-strong);
 }
 .matrix thead th:nth-child(1){width:19%}
@@ -1011,11 +1040,14 @@ body::after{
 }
 .fbtn:last-child{border-right:0}
 .fbtn:hover{color:var(--ink);background:var(--tint)}
+/* the gradient is bright in both themes — dark text is the legible pairing */
 .fbtn.is-on{
-  color:#fff;background:var(--accent);
-  transition:color .2s var(--ease),background .25s var(--ease);
+  color:#2b0a3d;
+  background:linear-gradient(150deg,rgba(255,175,225,.95),rgba(200,110,255,.92) 52%,rgba(120,150,255,.9));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 8px 22px -10px rgba(190,90,240,.75);
+  transition:color .25s var(--ease),background .3s var(--ease),box-shadow .3s var(--ease);
 }
-[data-theme="night"] .fbtn.is-on{color:#1a0d08}
+[data-theme="night"] .fbtn.is-on{color:#190622}
 .fcount{
   font-variant-numeric:tabular-nums;
   border-left:1px solid var(--rule);padding-left:8px;color:var(--ink-3);
