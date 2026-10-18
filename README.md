@@ -9,15 +9,17 @@ Personal site for **Balaji Yalburgi**, Software Test Engineer (QA automation, ma
 ## The idea
 
 The page is set as **an engineer's spec sheet** — the document a tester actually lives in.
-**Night by default**: a near-black canvas with a drafting-instrument schematic behind the
-hero, a single vermilion accent, hairline rules, dotted leaders and margin-set metadata.
-Paper is one click away via the `Aa` toggle in the masthead.
+Hairline rules, dotted leaders, section numbers in the left margin, a single vermilion accent.
 
-Type does the work: **Instrument Serif** for editorial moments, **IBM Plex Sans** for
-reading, **IBM Plex Mono** for anything a machine would print.
+**Two themes, and the visitor picks first.** On a first visit the site honours the operating
+system's `prefers-color-scheme`. After that, whatever they choose is remembered. The choice is
+applied before first paint, so there is no flash of the wrong theme.
 
-No gradients, no glass, no glow, no decorative terminals, no counters. Section numbers sit in
-the left margin like a printed document.
+Type does the work: **Inter** for reading, **IBM Plex Mono** for anything a machine would print —
+section numbers, stack lists, tool names, the QA Lab's console output.
+
+No gradients, no glass, no glow, no decorative terminals, no counters. Nothing floats. Nothing
+moves unless it is telling you something.
 
 ## Stack
 
@@ -26,9 +28,9 @@ Plain **HTML + CSS + vanilla JS**. No build step, no dependencies, no framework.
 ```
 PORTFOLIIO/
 ├── index.html              # the whole document
-├── css/style.css           # design system + responsive + interactive layer
-├── js/main.js              # nav, theme, scroll spy, reveal, anchors
-├── js/play.js              # the interactive layer (see below)
+├── css/style.css           # design tokens + layout + responsive
+├── js/main.js              # theme, nav, drawer, scroll spy, reveal, anchors
+├── js/play.js              # hero panel, QA Lab, project filters
 ├── assets/
 │   ├── favicon.svg
 │   └── Balaji_Yalburgi_Resume.pdf
@@ -40,70 +42,88 @@ PORTFOLIIO/
 
 | | |
 |---|---|
-| 01 | Context — the year, and how a defect actually gets closed |
-| 02 | Testing — every test type, what it involves, where it runs |
-| 03 | Toolkit — dotted-leader ledger of tools and practice |
-| 04 | Work — two roles, dates set in the margin |
-| 05 | Projects — three case studies, three different layouts |
-| 06 | Break My UI — an isolated demo with one seeded defect |
-| 07 | Credentials — degree, certifications, languages |
-| 08 | Contact |
+| — | Hero — the headline, and a demonstration suite you can actually run |
+| 01 | About — what I do, and how a defect gets closed |
+| 02 | Experience — two roles, dates set in the margin |
+| 03 | Skills — six groups, by what they're for |
+| 04 | Projects — three projects from the résumé, filterable |
+| 05 | QA Lab — three features, all deterministic |
+| 06 | Education & Certifications |
+| 07 | Contact |
 
-### Projects get three different layouts
+## The QA Lab
 
-They are three different problems, so they are three different pages:
+Three features under one tab strip. Everything is deterministic, self-contained, and makes no
+network request. If the script fails to load, the page still reads.
 
-- **Library Management System** → a *ledger*: modules, operations and the layer each is tested at
-- **AI-Powered Plant Health Detection** → a real *coverage matrix*, vertical column labels, filled cells
-- **Weather Forecasting Web App** → a *contract*: request/response blocks with what was checked
+**A · Break My UI** — a demo incident filter with **one deliberately seeded defect**: `INC-106`
+is stored as `"Closed "` with a trailing space, so the count beside the filter and the rows it
+renders disagree (three rows, label says two). You have to count the rows to notice — which is
+the point. Rows expand to reproduction notes, there's a reveal and a full reset, and it is
+completely isolated from the rest of the page.
 
-Each also carries a `<details>` "How I approached this" note — progressive disclosure, no JS.
+**B · Test Runner** — seven predefined checks that actually run in your browser:
 
-## The interactive layer (`js/play.js`)
+| Check | Kind |
+|---|---|
+| Navigation integrity | live |
+| Email format | live |
+| Body text contrast | live |
+| Responsive breakpoint | live |
+| Seeded defect still present | live |
+| API response shape | *simulated* — hard-coded payload |
+| Network timeout handling | *skipped* — no backend exists |
 
-Five things, each earning its place. None of them are required to read the page, and all of
-them degrade to plain content if the script fails to load.
+Simulated results are labelled simulated, and one check is deliberately skipped rather than faked.
+Nothing here executes arbitrary input or touches a server.
 
-**Pointer inspector** *(hero, desktop only)* — a small readout showing live pointer
-coordinates and what sits under the cursor. It reads the page the way a tester inspects one.
+**C · Edge-Case Challenge** — six scenarios (duplicate payment, dropped connection mid-checkout,
+email validation, USSD session timeout, `200 OK` with an empty body, keyboard covering the submit
+button). Pick what the app should do, then see why it matters, what the expected behaviour is,
+and the edge case most people miss. Progress and a completion note track your answers.
 
-**Break My UI** *(section 06)* — a demo incident filter with **one deliberately seeded
-defect**: `INC-106` is stored as `"Closed "` with a trailing space, so the count beside the
-filter and the rows it renders disagree. You have to count the rows to notice — which is the
-point. It has a reveal, a full reset, expandable reproduction notes, and is completely isolated
-from real navigation. Rows render statically, so it still reads correctly without JS.
+## Content honesty
 
-**Console** *(click the button, or press `~`)* — a real interface over a fixed command map.
-It never evaluates anything.
+Everything here is drawn from the résumé. Two rules the site holds itself to:
 
-```
-help        this list          qa       toggle QA annotations
-about       who is typing this theme    paper / night
-projects    jump to projects   defect   read the PORT-0001 write-up
-status      portfolio status   bug      look for trouble
-coffee      a developer-grade beverage
-clear / close
-```
+- **Simulated is never dressed up as real.** The hero panel and the API check both say so on
+  screen, not in a footnote.
+- **Missing detail is visible, not invented.** Each project ends with a `To complete:` line
+  listing what is genuinely still missing (repository links, screenshots, browsers tested) rather
+  than a fabricated number.
 
-**QA mode** *(press `q`)* — annotates the page with what was actually checked on it
-("sticky offset", "dotted leaders, not chips", "1 seeded defect, fully isolated").
+There is **no contact form** — with no backend behind it, a "message sent!" confirmation would be
+a lie. Contact is `mailto:`, LinkedIn, GitHub and X.
 
-**Do not click** *(footer)* — a button that asks not to be clicked. It escalates.
+### Before publishing
 
-Hidden touches: the footer reveals *"Exploratory testing completed — you found the human."*
-once three discoveries are made, and a 2px hairline tracks scroll at the very top.
+Project 4.3 says "cross-browser functional testing of the front end" and its `To complete:` line
+asks for the browsers actually tested. The résumé only says *cross-browser functional tests*, so
+fill that in or leave the placeholder. No accuracy percentages, coverage figures, API results or
+benchmarks are claimed anywhere.
 
 ## Craft details
 
 - Reveal-on-scroll is gated behind a `.js` class set in `<head>`, so **the page is never blank
   if JavaScript fails**
-- `prefers-reduced-motion` respected throughout; the inspector hides itself on touch devices
-- Keyboard: skip link, visible focus rings, `aria-pressed` on filters, `aria-expanded` on row
-  toggles, focus returned to the console trigger on close, `~` / `q` / `Esc` shortcuts
-- Responsive and hand-checked from **320px to 1920px**, zero horizontal overflow
-- **Night by default**, paper as the alternate; either choice is persisted to `localStorage`
-  and applies before first paint, so there is no flash of the wrong theme
+- `prefers-reduced-motion` respected throughout
+- Keyboard: skip link, visible focus rings, arrow-key tab navigation in the QA Lab, `aria-pressed`
+  on filters, `aria-expanded` on row toggles, `Esc` closes the mobile drawer
+- Responsive and audited from **390px to 1440px**, zero horizontal overflow
+- **System preference first**, then persisted to `localStorage`, applied before first paint
+- Contrast: every text token measured against its real rendered background in **both themes**;
+  all clear **WCAG AA (4.5:1)**
 - Print stylesheet
+
+## Verification
+
+Four headless-Chrome harnesses were used to check this build, all passing:
+
+| Harness | Covers |
+|---|---|
+| `verify.js` | overflow @1440 + @390, console errors, theme detection & persistence, filters, the seeded defect, all three QA Lab features, drawer |
+| `contrast.js` | 64 text targets × 2 themes × 2 viewports, measured from decoded screenshot pixels |
+| `night.js` | section captures in the dark theme, including every QA Lab tab in its interacted state |
 
 ## Run locally
 
@@ -117,37 +137,27 @@ python -m http.server 8000
 
 ## Deploy to GitHub Pages
 
+Pages builds from the **`Balaji11`** branch, not `main`:
+
 ```bash
-git remote add origin https://github.com/balajibalu003/Portfolio.git
-git push -u origin main --force
+git push origin HEAD Balaji11
 ```
-
-Then **Settings → Pages → Build and deployment → Deploy from a branch → `main` / `/(root)`**.
-
-`.nojekyll` is already included so GitHub Pages serves every file untouched.
 
 ## Editing
 
 | Change | Where |
 |---|---|
 | Any copy or section | `index.html` |
-| Seeded defect (the trailing space) | `INC-106` in `RAW` in `js/play.js` |
-| Console commands | `HANDLERS` in `js/play.js` |
-| QA-mode annotations | `data-qa="…"` attributes in `index.html` |
+| Seeded defect (the trailing space) | `RAW` in `js/play.js` |
+| QA Lab checks | `CHECKS` in `js/play.js` |
+| Edge-case scenarios | `SCENARIOS` in `js/play.js` |
+| Project categories | `data-cat` on each `.proj` in `index.html` |
 | Colours, type, spacing | `:root` / `[data-theme]` at the top of `css/style.css` |
 | Résumé | replace `assets/Balaji_Yalburgi_Resume.pdf` |
-
-### Content honesty
-
-Everything is drawn from the résumé and the previous site. The one place to check before
-publishing: section 05.3 lists Chrome / Firefox / Safari under "cross-browser" — the résumé
-only says *cross-browser functional tests*, so confirm those are the browsers actually tested,
-or edit that list.
 
 ## Contact
 
 - **Email:** balajiyalburgi003@gmail.com
-- **Phone:** +91 82962 07282
 - **LinkedIn:** [linkedin.com/in/balaji-yalburgi](https://www.linkedin.com/in/balaji-yalburgi/)
 - **GitHub:** [github.com/balajibalu003](https://github.com/balajibalu003)
 
