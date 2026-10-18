@@ -42,18 +42,59 @@
     });
   }
 
-  /* ---------- masthead hairline ---------- */
+  /* ---------- masthead material + scroll position ---------- */
   var mast = $('#mast');
   var ticking = false;
 
   function onScroll() {
-    if (mast) mast.classList.toggle('stuck', (window.pageYOffset || 0) > 8);
+    var y = window.pageYOffset || 0;
+    if (mast) mast.classList.toggle('is-stuck', y > 8);
     ticking = false;
   }
   window.addEventListener('scroll', function () {
     if (!ticking) { ticking = true; window.requestAnimationFrame(onScroll); }
   }, { passive: true });
   onScroll();
+
+  /* ---------- nav indicator: springs between items ---------- */
+  (function navIndicator() {
+    var nav = $('#contents');
+    var ind = $('#navInd');
+    if (!nav || !ind) return;
+    if (window.matchMedia('(hover: none)').matches) { ind.style.display = 'none'; return; }
+
+    var links = $$('a', nav);
+    if (!links.length) return;
+    var hovered = null;
+
+    function place(el) {
+      if (!el) { ind.classList.remove('on'); return; }
+      var r = el.getBoundingClientRect();
+      var nr = nav.getBoundingClientRect();
+      ind.style.width = r.width + 'px';
+      ind.style.transform = 'translate(' + (r.left - nr.left) + 'px,-50%)';
+      ind.classList.add('on');
+    }
+
+    function rest() {
+      /* when nothing is hovered, the indicator tracks the current section */
+      place(hovered || nav.querySelector('a[aria-current="true"]') || null);
+    }
+
+    links.forEach(function (a) {
+      a.addEventListener('mouseenter', function () { hovered = a; place(a); });
+      a.addEventListener('focus', function () { hovered = a; place(a); });
+    });
+
+    nav.addEventListener('mouseleave', function () { hovered = null; rest(); });
+
+    /* follow the active section as the spy moves */
+    var spy = new MutationObserver(function () { if (!hovered) rest(); });
+    spy.observe(nav, { attributes: true, subtree: true, attributeFilter: ['aria-current'] });
+
+    window.addEventListener('resize', rest, { passive: true });
+    rest();
+  })();
 
   /* ---------- drawer ---------- */
   var menuBtn = $('#menuBtn');

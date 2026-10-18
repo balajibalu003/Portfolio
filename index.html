@@ -23,7 +23,7 @@
 <a class="skip" href="#main">Skip to content</a>
 
 <!-- ══════════════ MASTHEAD ══════════════ -->
-<header class="mast" id="mast">
+<header class="mast glass-nav" id="mast">
   <div class="mast-in">
     <a href="#top" class="wordmark">
       <span class="wm-dot" aria-hidden="true"></span>
@@ -32,6 +32,7 @@
     </a>
 
     <nav class="contents" id="contents" aria-label="Sections">
+      <span class="nav-ind" id="navInd" aria-hidden="true"></span>
       <ol>
         <li><a href="#context"><i>01</i>Context</a></li>
         <li><a href="#testing"><i>02</i>Testing</a></li>
@@ -57,7 +58,7 @@
 </header>
 
 <!-- ══════════════ DRAWER (mobile) ══════════════ -->
-<div class="drawer" id="drawer" hidden>
+<div class="drawer glass-panel" id="drawer" hidden>
   <nav aria-label="Sections">
     <ol>
       <li><a href="#context"><i>01</i><span>Context</span></a></li>
@@ -117,7 +118,7 @@
       </div>
 
       <!-- colophon: the spec block, set down and offset -->
-      <aside class="colophon rv" data-d="3" data-qa="single source of truth" aria-label="At a glance">
+      <aside class="colophon glass rv" data-d="3" data-qa="single source of truth" aria-label="At a glance">
         <p class="colo-head">Specification</p>
         <dl>
           <div><dt>Experience</dt><dd>1 year</dd></div>
@@ -580,7 +581,7 @@
         </div>
 
         <div class="contract">
-          <div class="contract-block">
+          <div class="contract-block glass">
             <p class="c-head"><span class="c-method">GET</span> /forecast</p>
             <ul class="c-body">
               <li><span>coordinates</span><span class="c-ok">checked</span></li>
@@ -589,7 +590,7 @@
               <li><span>error responses</span><span class="c-ok">edge cases</span></li>
             </ul>
           </div>
-          <div class="contract-block">
+          <div class="contract-block glass">
             <p class="c-head"><span class="c-method c-method-2">UI</span> rendering</p>
             <ul class="c-body">
               <li><span>Chrome</span><span class="c-ok">cross-browser</span></li>
@@ -613,7 +614,7 @@
       <p class="sheet-note">A deliberately imperfect component. One defect is seeded on purpose — find it before you trust the label.</p>
     </div>
 
-    <div class="pg rv" data-qa="1 seeded defect, fully isolated">
+    <div class="pg glass rv" data-qa="1 seeded defect, fully isolated">
       <div class="pg-bar">
         <p class="pg-file">incident-filter<span class="pg-ver">v0.3</span></p>
         <p class="pg-badge">demo · not real data</p>
@@ -779,16 +780,16 @@
 </footer>
 
 <!-- ══════════════ CONSOLE ══════════════ -->
-<button type="button" class="con-trigger" id="conTrigger" aria-expanded="false" aria-controls="conPanel">
+<button type="button" class="con-trigger glass" id="conTrigger" aria-expanded="false" aria-controls="conPanel">
   <span aria-hidden="true">&gt;_</span><span class="con-trigger-label">console</span>
 </button>
 
-<div class="con" id="conPanel" hidden>
+<div class="con glass-panel" id="conPanel" hidden>
   <div class="con-head">
     <p class="con-title">balaji@portfolio <span>— console</span></p>
     <button type="button" class="con-x" id="conClose" aria-label="Close console">esc&nbsp;✕</button>
   </div>
-  <div class="con-out" id="conOut" role="log" aria-live="polite"></div>
+  <div class="con-out glass-inset" id="conOut" role="log" aria-live="polite"></div>
   <form class="con-in" id="conForm">
     <label class="con-prompt" for="conInput" aria-hidden="true">$</label>
     <input class="con-field" id="conInput" type="text" autocomplete="off" autocapitalize="off"
@@ -798,7 +799,7 @@
 
 <div class="progress" aria-hidden="true"><span id="progBar"></span></div>
 
-<div class="qa-banner" id="qaBanner" hidden>
+<div class="qa-banner glass-panel" id="qaBanner" hidden>
   <p><b>QA mode on.</b> <span id="qaWhat">Annotations are live.</span></p>
   <button type="button" class="tool" id="qaExit">Exit (q)</button>
 </div>
