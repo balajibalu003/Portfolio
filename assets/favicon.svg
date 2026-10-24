@@ -1,6 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <rect width="64" height="64" rx="4" fill="#f3f0e8"/>
-  <rect x="4" y="4" width="56" height="56" rx="2" fill="none" stroke="#d9d3c4" stroke-width="1.5"/>
-  <text x="32" y="43" font-family="Georgia,serif" font-size="34" fill="#a83c1e" text-anchor="middle">b</text>
-  <rect x="12" y="51" width="40" height="2" fill="#1a1813"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Balaji Yalburgi">
+  <rect width="64" height="64" rx="14" fill="#FF7A1F"/>
+  <text x="32" y="40.5" font-family="'JetBrains Mono','SFMono-Regular',Consolas,monospace"
+        font-size="24" font-weight="700" letter-spacing="-1.2" fill="#0A0B0C" text-anchor="middle">BY</text>
 </svg>

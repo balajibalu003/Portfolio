@@ -1,6 +1,6 @@
 # Balaji Yalburgi — Portfolio
 
-Personal site for **Balaji Yalburgi**, Software Test Engineer (QA automation, manual & API/mobile testing), Bangalore, India.
+Personal site for **Balaji Yalburgi**, Software Test Engineer (QA automation, manual & API/mobile testing), Bengaluru, India.
 
 > **Live:** https://balajibalu003.github.io/Portfolio/
 
@@ -8,29 +8,39 @@ Personal site for **Balaji Yalburgi**, Software Test Engineer (QA automation, ma
 
 ## The idea
 
-The page is set as **an engineer's spec sheet** — the document a tester actually lives in.
-Hairline rules, dotted leaders, section numbers in the left margin, a single vermilion accent.
+**Acid editorial.** Bone paper by day, near black by night, one orange accent used sparingly
+and always at full weight. Bricolage Grotesque for display, Inter for reading, JetBrains Mono for
+labels. A film grain overlay sits over the solid colour so flat surfaces never look flat.
 
 **Two themes, and the visitor picks first.** On a first visit the site honours the operating
 system's `prefers-color-scheme`. After that, whatever they choose is remembered. The choice is
 applied before first paint, so there is no flash of the wrong theme.
 
-Type does the work: **Inter** for reading, **IBM Plex Mono** for anything a machine would print —
-section numbers, stack lists, tool names and the hero suite output.
+The accent rules: orange carries black text on fills (buttons, the wordmark tile, the
+education card, the active nav pill), but it is never used for small text on the paper theme.
+Small accent labels use the vermilion from the first version of this site, which measures 5.5:1 on paper.
 
-No gradients, no glass, no glow, no decorative terminals, no counters. Nothing floats. Nothing
-moves unless it is telling you something.
+The Gen Z layer sits on top of that restraint: sticker chips with hard offset shadows (class of 2025,
+built and tested, no forms, open to work), a skill marquee that alternates filled and outlined words,
+an orange halftone dot grid behind the hero, and a tilted highlighter on the word not in the headline.
+
+## Recruiter snapshot
+
+Instead of a separate "recruiter view", the résumé facts live in a **snapshot card** on the right
+of the hero, visible from the first paint: four counted numbers (50+ automated cases, 10+ sprints,
+4 surfaces, 7 certifications) and six facts (role, current employer, contract route, location,
+degree and CGPA, languages). A recruiter gets the who, where and what in one glance.
 
 ## Stack
 
-Plain **HTML + CSS + vanilla JS**. No build step, no dependencies, no framework.
+Plain **HTML + CSS + vanilla JS**. No build step, no dependencies, no framework, no animation
+library.
 
 ```
 PORTFOLIIO/
 ├── index.html              # the whole document
-├── css/style.css           # design tokens + layout + responsive
-├── js/main.js              # theme, nav, drawer, scroll spy, reveal, anchors
-├── js/play.js              # project category filters
+├── css/style.css           # design tokens + grain + layout + responsive ladder
+├── js/main.js              # theme, drawer, reveal, scroll spy, filters, counters, motion
 ├── assets/
 │   ├── favicon.svg
 │   ├── og.png              # 1200x630 social share card
@@ -45,18 +55,40 @@ PORTFOLIIO/
 
 | | |
 |---|---|
-| — | Hero — the headline, plus the at a glance panel |
+| — | Hero — headline plus the snapshot card |
+| — | Skill marquee — between hero and About, pausable on hover |
 | 01 | About — what I do, and the four surfaces |
-| 02 | Experience — two roles, dates set in the margin |
-| 03 | Skills — six groups, by what they're for |
+| 02 | Experience — two roles, dates sticky in the margin |
+| 03 | Skills — six cards in a bento grid |
 | 04 | Projects — three projects from the résumé, filterable |
 | 05 | Education & Certifications |
 | 06 | Contact |
 
-## The hero
+## Motion
 
-The headline, the supporting line, three calls to action, and the **at a glance** panel: current
-role, contract route, the four surfaces, degree and languages. Six facts, no decoration.
+Additive, never load bearing. Everything under `prefers-reduced-motion` reduced is simply off.
+
+- staggered reveal on scroll (IntersectionObserver, one pass each)
+- hero headline line rise
+- skill marquee (duplicated group + `translateX(-50%)`, pauses on hover)
+- counted numbers in the snapshot
+- card tilt plus a spotlight that follows the pointer (fine pointers only)
+- magnetic pull on primary buttons
+- sliding accent pill in the nav, animated to the active section from real measurements
+- View Transitions API cross fade on the theme toggle, where supported
+
+## Responsive ladder
+
+Audited at 360, 390, 768, 1024, 1440, 1920 and 2560 with zero horizontal overflow.
+
+| Range | Behaviour |
+|---|---|
+| 360–479 | single column, full width buttons, surfaces become a snap scroll rail |
+| 480–899 | single column, two up bento skills |
+| 900–1439 | two column hero, sticky experience dates, full bento |
+| 1440–1799 | full layout, 1200px measure |
+| 1800+ (TV) | 1560px measure, type steps up, hero fills the screen vertically, 52px minimum targets, 3px focus rings |
+| 2560+ | independent clamp ceiling |
 
 ## Images and visuals
 
@@ -74,16 +106,11 @@ file, render it at 1200x630 in headless Chrome, and write the PNG over `assets/o
 | `plant.jpg` | `Dark Plant Health Detection Dashboard.png` | 96 KB |
 | `weather.jpg` | `Weather Forecasting Dashboard.png` | 96 KB |
 
-The originals are 1.4 MB PNGs. Each is cropped to remove the title band, which duplicated the card
-heading, then downscaled to 1200px wide and re encoded as JPEG quality 88. That takes 4.2 MB down
-to 303 KB, a 14x saving, with no visible loss on flat UI colour.
+The originals are 1.4 MB PNGs, cropped to remove the title band, downscaled to 1200px and re
+encoded as JPEG quality 88: 4.2 MB down to 303 KB, with no visible loss on flat UI colour.
 
 Each image carries an `INTERFACE MOCKUP` caption, because a fabricated `Confidence: 91%` should
 never read as a measurement.
-
-Every freely licensed photo source reachable from this machine was checked and rejected for
-decorative use: Pexels 403, Unsplash 401, Wikimedia 429, and Openverse returns phones on white fur
-and against cherry blossoms.
 
 To swap in a real screenshot later, replace the `<img>` inside the `<figure class="shot">`, keep
 the 16:9 ratio, update the `alt` text, and delete the `shot-cap` figcaption.
@@ -97,43 +124,37 @@ No hyphens, en dashes or em dashes anywhere in visible copy. Punctuation does th
 parentheses for asides, full stops for beats, commas for continuations.
 
 Identifiers keep their hyphens, because they are correct by convention and changing them would
-make them wrong: ticket IDs (`INC-106`), the LinkedIn profile slug (`/in/balaji-yalburgi`), and the
-required `viewport-fit=cover` meta value.
+make them wrong: the LinkedIn profile slug (`/in/balaji-yalburgi`), and the required
+`viewport-fit=cover` meta value.
 
 ## Content honesty
 
-- **Nothing is dressed up as real.** Each project image carries an INTERFACE MOCKUP caption for
+- **Nothing is dressed up as real.** Each project image carries an INTERFACE MOCKUP caption.
 - **Nothing is invented.** Missing detail is simply absent, never filled with a plausible number.
   There are no accuracy percentages, coverage figures, API results or benchmarks anywhere.
 - **No contact form.** With no backend behind it, a "message sent!" confirmation would be a lie.
   Contact is `mailto:`, LinkedIn, GitHub and X.
 
-### Before publishing
-
-Project 4.3 says "cross browser functional testing of the interface". The résumé only says *cross
-browser functional tests*, so confirm the browsers actually tested or narrow the wording.
-
 ## Craft details
 
 - Reveal on scroll is gated behind a `.js` class set in `<head>`, so **the page is never blank if
   JavaScript fails**
-- `prefers-reduced-motion` respected throughout
+- `prefers-reduced-motion` respected throughout; tilt and magnet only on fine pointers
 - Keyboard: skip link, visible focus rings, `aria-pressed` on filters, `Esc` closes the drawer
-- Responsive and audited from **390px to 1440px**, zero horizontal overflow
 - **System preference first**, then persisted to `localStorage`, applied before first paint
-- Contrast: every text token measured against its real rendered background in **both themes**; all
-  clear **WCAG AA (4.5:1)**
+- Contrast: 51 text targets measured against their real rendered backgrounds by decoding
+  screenshot pixels, in both themes at 1440 and 390; 204 measurements, **all clear WCAG AA 4.5:1**
 - Print stylesheet
 
 ## Verification
 
-Three headless Chrome harnesses, all passing:
+Headless Chrome harnesses driven over the DevTools protocol, all passing:
 
 | Harness | Covers |
 |---|---|
-| `verify.js` | overflow at 1440 and 390, console errors, theme detection and persistence, nav integrity, section numbering, filters, hero layout, image decoding, drawer |
-| `contrast.js` | 54 text targets x 2 themes x 2 viewports, measured from decoded screenshot pixels |
-| `night.js` | section captures in the dark theme and on a phone |
+| functional suite | theme detection, persistence and toggle; anchor integrity; section numbering; counts of nav links, stats, facts, projects, certs, surfaces; removed features stay removed; webfonts loaded; masthead, progress bar, reveal, nav pill, counters; all five filter states; no overflow at 360 to 2560; drawer open and escape; reduced motion; copy button and mailto; résumé links; no console errors; no stray hyphens in copy |
+| contrast suite | 51 text targets x 2 themes x 2 viewports, measured from decoded screenshot pixels |
+| capture suite | section and viewport screenshots at 360, 390, 768, 1440, 1920 and TV, both themes |
 
 ## Run locally
 
@@ -145,10 +166,11 @@ or just open `index.html`.
 
 ## Deploy to GitHub Pages
 
-Pages builds from the **`Balaji11`** branch, not `main`:
+Pages builds from the **`Balaji11`** branch, not `main`. Nothing is pushed without a look at local
+first:
 
 ```bash
-git push origin HEAD Balaji11
+git push origin HEAD:Balaji11
 ```
 
 ## Editing
@@ -158,8 +180,8 @@ git push origin HEAD Balaji11
 | Any copy or section | `index.html` |
 | Project categories | `data-cat` on each `.proj` in `index.html` |
 | Project image slots | `<figure class="shot">` in each `.proj` |
-| The defect life cycle visual | `<svg class="viz">` in About |
-| Colours, type, spacing | `:root` / `[data-theme]` at the top of `css/style.css` |
+| Colours, type, spacing, TV steps | `:root` / `[data-theme]` and the media queries at the bottom of `css/style.css` |
+| Motion intensity | the reveal, counters, tilt and magnet blocks in `js/main.js` |
 | Résumé | replace `assets/Balaji_Yalburgi_Resume.pdf` |
 
 ## Contact
@@ -170,4 +192,4 @@ git push origin HEAD Balaji11
 
 ---
 
-© 2026 Balaji Yalburgi. No bugs were harmed in the making of this portfolio.
+© 2026 Balaji Yalburgi. Every bug has a story. Let's find it.

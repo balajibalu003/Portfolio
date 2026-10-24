@@ -20,3 +20,6 @@ assets/projects/*Dashboard.png
 assets/surfaces/*Dashboard*.png
 assets/surfaces/*Dialer*.png
 assets/surfaces/*Wallet*.png
+
+# Phone installer accidentally dropped into assets. Never part of the site.
+assets/**/*.exe
