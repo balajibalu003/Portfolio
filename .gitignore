@@ -23,3 +23,6 @@ assets/surfaces/*Wallet*.png
 
 # Phone installer accidentally dropped into assets. Never part of the site.
 assets/**/*.exe
+*.lnk
+.DS_Store
+Thumbs.db
