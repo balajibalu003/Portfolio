@@ -398,6 +398,17 @@
     });
   })();
 
+
+  /* ---------- cursor glow ---------- */
+  var glowEl = $('#cursorGlow');
+  if (glowEl && finePointer && !reduced) {
+    document.addEventListener('mousemove', function (e) {
+      glowEl.style.left = e.clientX + 'px';
+      glowEl.style.top  = e.clientY + 'px';
+    }, { passive: true });
+  }
+
   root.classList.add('js-ready');
 
 })();
+
